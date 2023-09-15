@@ -277,7 +277,10 @@ write.table(mydf2, "species-list.csv",  row.names=FALSE, col.names = FALSE, sep=
 df = read.csv("species-list-info.csv")
 df$broad.cellularity = "uni"
 df$broad.cellularity[grepl("multi", df$cellularity, fixed=TRUE)] = "multi"
-  
+df$broad.timing = "perennial"
+df$broad.timing[df$timing != "perennial"] = "shorter"
+df$broad.timing[is.na(df$timing)] = NA
+
 g.algae = ggplot(df, aes(x=mtnorm,y=ptnorm,color=alga)) + 
   geom_point() + theme_classic()
 g.parasite = ggplot(df, aes(x=mtnorm,y=ptnorm,color=parasite)) + 
@@ -286,9 +289,11 @@ g.cellularity = ggplot(df, aes(x=mtnorm,y=ptnorm,color=broad.cellularity)) +
   geom_point() + theme_classic()
 g.herbaceous = ggplot(df, aes(x=mtnorm,y=ptnorm,color=herbaceous)) + 
   geom_point() + theme_classic()
+g.timing = ggplot(df, aes(x=mtnorm,y=ptnorm,color=broad.timing)) + 
+  geom_point() + theme_classic()
 
 png("fig-s3.png", width=800*sf, height=600*sf, res=72*sf)
-grid.arrange(g.algae, g.parasite, g.cellularity, g.herbaceous, nrow=2)
+grid.arrange(g.algae, g.cellularity, g.herbaceous, g.timing, nrow=2)
 dev.off()
 
 
@@ -299,11 +304,22 @@ x = list(
 #  Multicellular = which(df$broad.cellularity=="multi"),
   Herbaceous = which(df$herbaceous=="yes")
 )
-png("venn-diag.png", width=400*sf, height=400*sf, res=72*sf)
-ggVennDiagram(x) + 
+g.venn.1 = ggVennDiagram(x) + 
   scale_fill_gradient(low="white",high = "blue") +
   scale_color_discrete("#000000") 
-  
+
+x = list(
+  Perennial = which(df$broad.timing=="perennial"),
+  Green = which(grepl("reen", df$notes) | df$herbaceous != "undefined"),
+  Algae = which(df$alga=="yes"),
+  #  Multicellular = which(df$broad.cellularity=="multi"),
+  Herbaceous = which(df$herbaceous=="yes")
+)
+g.venn.2 = ggVennDiagram(x) + 
+  scale_fill_gradient(low="white",high = "blue") +
+  scale_color_discrete("#000000") 
+png("venn-diags.png", width=800*sf, height=400*sf, res=72*sf)
+grid.arrange(g.venn.1, g.venn.2, nrow=1)
 dev.off()
 
 length(which(df$alga=="yes" & df$broad.cellularity=="uni"))

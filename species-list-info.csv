@@ -1,206 +1,206 @@
 notes,alga,timing,herbaceous,parasite,cellularity,organelles,species,mt,pt,mtnorm,ptnorm,clade
-australian shrub,no,,no,no,multi,,acacia ligulata,37,73,5.707482993,0.673469388,Viridiplantae
-chilean red macroalga,yes,,NA,no,multi,,agarophyton chilense,24,158,0.833333333,-5.033333333,Rhodophyta
-european weed,no,,yes,no,multi,,ajuga reptans,29,76,-2.292517007,3.673469388,Viridiplantae
-onion,no,,yes,no,multi,,allium cepa,26,73,-5.292517007,0.673469388,Viridiplantae
-asian shrub,no,,no,no,multi,,ammopiptanthus mongolicus,33,73,1.707482993,0.673469388,Viridiplantae
-hornwort,no,,yes,no,multi,,anthoceros angustus,20,81,-11.29251701,8.673469388,Viridiplantae
-cress,no,,yes,no,multi,,arabidopsis thaliana,31,75,-0.292517007,2.673469388,Viridiplantae
-mountain cress,no,,yes,no,multi,,arabis alpina,31,73,-0.292517007,0.673469388,Viridiplantae
-american weed,no,,yes,no,multi,,asclepias syriaca,36,74,4.707482993,1.673469388,Viridiplantae
-lake/river diatom,yes,,NA,no,uni,,asterionella formosa,33,117,0.727272727,6.181818182,Bacillariophyta
-apicomplexan,no,,NA,yes,uni,,babesia microti strain ri,3,20,0,-0.5,Apicomplexa
-scani rhodophyte,yes,,NA,epiphyte,multi,,balbiania investiens,24,168,0.833333333,4.966666667,Rhodophyta
-brassica,no,,yes,no,multi,,brassica juncea,33,75,1.707482993,2.673469388,Viridiplantae
-brassica,no,,yes,no,multi,,brassica napus,32,75,0.707482993,2.673469388,Viridiplantae
-brassica,no,,yes,no,multi,,brassica nigra,32,75,0.707482993,2.673469388,Viridiplantae
-brassica,no,,yes,no,multi,,brassica oleracea,33,75,1.707482993,2.673469388,Viridiplantae
-intertidal red algae,yes,,NA,no,multi,,calliarthron tuberculosum,24,169,0.833333333,5.966666667,Rhodophyta
-tea,no,,no,no,multi,,camellia sinensis,28,76,-3.292517007,3.673469388,Viridiplantae
-cannabis,no,,yes,no,multi,,cannabis sativa,35,75,3.707482993,2.673469388,Viridiplantae
-like cress,no,,yes,no,multi,,capsella rubella,31,75,-0.292517007,2.673469388,Viridiplantae
-chili pepper,no,,no,no,multi,,capsicum annuum,37,75,5.707482993,2.673469388,Viridiplantae
-papaya,no,,no,no,multi,,carica papaya,38,75,6.707482993,2.673469388,Viridiplantae
-colombian herb,no,,yes,no,multi,,castilleja paramensis,34,72,2.707482993,-0.326530612,Viridiplantae
-green alga,yes,,NA,no,multi,,caulerpa lentillifera,17,72,-14.29251701,-0.326530612,Viridiplantae
-green alga,yes,,NA,no,multi,,chara vulgaris,38,86,6.707482993,13.67346939,Viridiplantae
-quinoa,no,,yes,no,multi,,chenopodium quinoa,30,75,-1.292517007,2.673469388,Viridiplantae
-unicell green alga,yes,,NA,no,uni,,chlamydomonas leiostraca,7,63,-24.29251701,-9.326530612,Viridiplantae
-unicell green alga,yes,,NA,no,uni,,chlamydomonas reinhardtii,8,59,-23.29251701,-13.32653061,Viridiplantae
-unicell green alga,yes,,NA,no,uni,,chlorella variabilis,31,73,-0.292517007,0.673469388,Viridiplantae
-green alga colonial 2-8 cells,yes,,NA,no,colonial,,chlorokybus atmophyticus,38,90,6.707482993,17.67346939,Viridiplantae
-green alga,yes,,NA,no,uni,"1 CP, 1 MT",chloroparvula japonica,35,64,3.707482993,-8.326530612,Viridiplantae
-green alga,yes,,NA,no,uni,"1 CP, 1 MT",chloroparvula pacifica,35,64,3.707482993,-8.326530612,Viridiplantae
-green alga,yes,,NA,no,uni,"1 CP, 1 MT",chloropicon laureae,34,66,2.707482993,-6.326530612,Viridiplantae
-green alga,yes,,NA,no,uni,"1 CP, 1 MT",chloropicon mariensis,34,66,2.707482993,-6.326530612,Viridiplantae
-green alga,yes,,NA,no,uni,"1 CP, 1 MT",chloropicon maureeniae,34,66,2.707482993,-6.326530612,Viridiplantae
-green alga,yes,,NA,no,uni,"1 CP, 1 MT",chloropicon roscoffensis,34,66,2.707482993,-6.326530612,Viridiplantae
-green alga,yes,,NA,no,uni,"1 CP, 1 MT",chloropicon sieburthii,34,66,2.707482993,-6.326530612,Viridiplantae
-green alga,yes,,NA,no,?uni,,chlorosarcinopsis eremi,7,64,-24.29251701,-8.326530612,Viridiplantae
-chrysanthemum,no,,yes,no,multi,,chrysanthemum boreale,32,74,0.707482993,1.673469388,Viridiplantae
-?green alga,yes,,NA,no,uni,,chrysochromulina parva,20,96,0,0,Haptista
-watermelon,no,,yes,no,multi,,citrullus lanatus,37,75,5.707482993,2.673469388,Viridiplantae
-orange,no,,no,no,multi,,citrus sinensis,32,75,0.707482993,2.673469388,Viridiplantae
-desmid alga,yes,,NA,no,uni,,closterium baillyanum,38,84,6.707482993,11.67346939,Viridiplantae
-brown alga,yes,,NA,no,multi,,coccophora langsdorfii,34,121,0,4.222222222,Phaeophyceae
-coconut,no,,no,no,multi,,cocos nucifera,41,76,9.707482993,3.673469388,Viridiplantae
-green alga,yes,,NA,no,basic multi,,coleochaete scutata,36,79,4.707482993,6.673469388,Viridiplantae
-littoral red alga,yes,,NA,no,multi,,corallina chilensis,24,168,0.833333333,4.966666667,Rhodophyta
-littoral red alga,yes,,NA,no,multi,,corallina ferreyrae,23,168,-0.166666667,4.966666667,Rhodophyta
-like jute,no,,yes,no,multi,,corchorus capsularis,37,75,5.707482993,2.673469388,Viridiplantae
-jute,no,,yes,no,multi,,corchorus olitorius,35,75,3.707482993,2.673469388,Viridiplantae
-brown kelp,yes,,NA,no,multi,,costaria costata,34,119,0,2.222222222,Phaeophyceae
-red algae,yes,,NA,no,multi,,crassa caudata,24,162,0.833333333,-1.033333333,Rhodophyta
-cucumber,no,,yes,no,multi,,cucumis sativus,37,75,5.707482993,2.673469388,Viridiplantae
-pumpkin,no,,yes,no,multi,,cucurbita pepo,37,75,5.707482993,2.673469388,Viridiplantae
-apicomplexan,no,,NA,yes,uni,,cyclospora cayetanensis,3,21,0,0.5,Apicomplexa
-diatom,yes,,NA,no,uni,2 CP,cylindrotheca closterium,34,115,1.727272727,4.181818182,Bacillariophyta
-green alga,yes,,NA,no,?uni,,cymbomonas tetramitiformis,30,72,-1.292517007,-0.326530612,Viridiplantae
-climbing woody vine,no,,no,no,multi,,cynanchum auriculatum,24,76,-7.292517007,3.673469388,Viridiplantae
-red alga,yes,,NA,no,multi,,dasya binghamiae,22,157,-1.166666667,-6.033333333,Rhodophyta
-Yellow-brown alga,yes,,NA,no,multi,,dictyopteris divaricata,34,118,0,1.222222222,Phaeophyceae
-diatom “rock snot”,yes,,NA,no,uni,,didymosphenia geminata,33,116,0.727272727,5.181818182,Bacillariophyta
-american flower,no,,yes,no,multi,,diplostephium hartwegii,35,76,3.707482993,3.673469388,Viridiplantae
-flower,no,,yes,no,multi,,dorcoceras hygrometricum,30,72,-1.292517007,-0.326530612,Viridiplantae
-halophile green alga,yes,,NA,no,uni,,dunaliella salina,7,63,-24.29251701,-9.326530612,Viridiplantae
-grass,no,,yes,no,multi,,eleusine indica,33,75,1.707482993,2.673469388,Viridiplantae
-brown alga,yes,,NA,no,multi,,endarachne binghamiae,34,120,0,3.222222222,Phaeophyceae
-green alga,yes,,NA,no,?filament,,entransia fimbriata,32,82,0.707482993,9.673469388,Viridiplantae
-loquat fruit,no,,no,no,multi,,eriobotrya japonica,33,75,1.707482993,2.673469388,Viridiplantae
-gum tree,no,,no,no,multi,,eucalyptus grandis,37,67,5.707482993,-5.326530612,Viridiplantae
-Freshwater diatom,yes,,NA,no,uni,,eunotia naegelii,33,120,0.727272727,9.181818182,Bacillariophyta
-marine diatom,yes,,NA,no,uni,,fistulifera solaris,33,113,0.727272727,2.181818182,Bacillariophyta
-brown seaweed,yes,,NA,no,multi,,fucus vesiculosus,34,121,0,4.222222222,Phaeophyceae
-unicell extremophile rhodophyte,yes,,NA,no,uni,,galdieria sulphuraria,18,154,-5.166666667,-9.033333333,Rhodophyta
-red algae,yes,,NA,no,multi,,gelidium coulteri,23,164,-0.166666667,0.966666667,Rhodophyta
-red algae,yes,,NA,no,multi,,gelidium gabrielsonii,23,164,-0.166666667,0.966666667,Rhodophyta
-red algae,yes,,NA,no,multi,,gelidium galapagense,23,164,-0.166666667,0.966666667,Rhodophyta
-red algae,yes,,NA,no,multi,,gelidium kathyanniae,23,164,-0.166666667,0.966666667,Rhodophyta
-red algae,yes,,NA,no,multi,,gelidium sinicola,23,164,-0.166666667,0.966666667,Rhodophyta
-red algae,yes,,NA,no,multi,,gelidium vagum,23,164,-0.166666667,0.966666667,Rhodophyta
-madeiran flower,no,,yes,no,multi,,geranium maderense,27,74,-4.292517007,1.673469388,Viridiplantae
-gymnosperm tree,no,,no,no,multi,,ginkgo biloba,40,79,8.707482993,6.673469388,Viridiplantae
-unicellular alga,yes,,NA,no,uni,Blue-green CP,gloeochaete wittrockiana,32,108,0,0,Glaucocystophyceae
-soybean,no,,yes,no,multi,,glycine max,32,74,0.707482993,1.673469388,Viridiplantae
-wild soybean,no,,yes,no,multi,,glycine soja,31,74,-0.292517007,1.673469388,Viridiplantae
-green alga colonial 4-16 cell,yes,,NA,no,colonial,,gonium pectorale,7,61,-24.29251701,-11.32653061,Viridiplantae
-cotton,no,,no,no,multi,,gossypium arboreum,36,74,4.707482993,1.673469388,Viridiplantae
-cotton,no,,no,no,multi,,gossypium barbadense,36,75,4.707482993,2.673469388,Viridiplantae
-cotton,no,,no,no,multi,,gossypium davidsonii,36,75,4.707482993,2.673469388,Viridiplantae
-cotton,no,,no,no,multi,,gossypium harknessii,32,75,0.707482993,2.673469388,Viridiplantae
-cotton,no,,no,no,multi,,gossypium hirsutum,33,74,1.707482993,1.673469388,Viridiplantae
-cotton,no,,no,no,multi,,gossypium raimondii,36,74,4.707482993,1.673469388,Viridiplantae
-cotton,no,,no,no,multi,,gossypium thurberi,36,74,4.707482993,1.673469388,Viridiplantae
-cotton,no,,no,no,multi,,gossypium trilobum,36,75,4.707482993,2.673469388,Viridiplantae
-red alga,yes,,NA,no,multi,,gracilaria ferox,24,162,0.833333333,-1.033333333,Rhodophyta
-red alga,yes,,NA,no,multi,,gracilaria gracilis,24,162,0.833333333,-1.033333333,Rhodophyta
-red alga,yes,,NA,no,multi,,gracilariopsis heteroclada,24,164,0.833333333,0.966666667,Rhodophyta
-red alga,yes,,NA,no,multi,,gracilariopsis longissima,24,162,0.833333333,-1.033333333,Rhodophyta
-red alga,yes,,NA,no,multi,,gracilariopsis mclachlanii,24,162,0.833333333,-1.033333333,Rhodophyta
-liverwort,no,,yes,no,multi,,gymnomitrion concinnatum,41,82,9.707482993,9.673469388,Viridiplantae
-brazilian tree,no,,no,no,multi,,haematoxylum brasiletto,37,74,5.707482993,1.673469388,Viridiplantae
-blue marine diatom,yes,,NA,no,uni,,haslea nusantara,31,116,-1.272727273,5.181818182,Bacillariophyta
-sunflower,no,,yes,no,multi,,helianthus annuus,24,76,-7.292517007,3.673469388,Viridiplantae
-extinct plant,no,,yes,no,multi,,hesperelaea palmeri,37,68,5.707482993,-4.326530612,Viridiplantae
-red alga,yes,,NA,no,multi,,hydropuntia rangiferina,24,162,0.833333333,-1.033333333,Rhodophyta
-nightshade,no,,yes,no,multi,,hyoscyamus niger,37,75,5.707482993,2.673469388,Viridiplantae
-japanese flower,no,,yes,no,multi,,ipomoea nil,30,75,-1.292517007,2.673469388,Viridiplantae
-sea moss red alga,yes,,NA,no,multi,,kappaphycus alvarezii,24,165,0.833333333,1.966666667,Rhodophyta
-lettuce,no,,yes,no,multi,,lactuca sativa,31,76,-0.292517007,3.673469388,Viridiplantae
-myrtle bush,no,,no,no,multi,,lagerstroemia indica,36,75,4.707482993,2.673469388,Viridiplantae
-brown seaweed,yes,,NA,no,multi,,laminaria digitata,34,89,0,-27.77777778,Phaeophyceae
-hornwort,no,,yes,no,multi,,leiosporoceros dussii,23,83,-8.292517007,10.67346939,Viridiplantae
-grey kelp,yes,,NA,no,multi,,lessonia spicata,34,119,0,2.222222222,Phaeophyceae
-rainforest shrub,no,,no,no,multi,,leucaena trichandra,35,74,3.707482993,1.673469388,Viridiplantae
-shrub,no,,no,no,multi,,libidibia coriaria,37,75,5.707482993,2.673469388,Viridiplantae
-tulip tree,no,,no,no,multi,,liriodendron tulipifera,41,75,9.707482993,2.673469388,Viridiplantae
-legume,no,,yes,no,multi,,lotus japonicus,31,74,-0.292517007,1.673469388,Viridiplantae
-cassava,no,,no,no,multi,,manihot esculenta,32,75,0.707482993,2.673469388,Viridiplantae
-turkish red alga,yes,,NA,no,multi,,mastocarpus papillatus,24,164,0.833333333,0.966666667,Rhodophyta
-legume,no,,yes,no,multi,,medicago truncatula,31,73,-0.292517007,0.673469388,Viridiplantae
-red alga,yes,,NA,no,multi,,melanthalia intermedia,24,161,0.833333333,-2.033333333,Rhodophyta
-mulberry,no,,no,no,multi,,morus notabilis,26,75,-5.292517007,2.673469388,Viridiplantae
-green alga,yes,,NA,no,uni,,mychonastes homosphaera,13,65,-18.29251701,-7.326530612,Viridiplantae
-lotus,no,,yes,no,multi,,nelumbo nucifera,40,75,8.707482993,2.673469388,Viridiplantae
-red alga,yes,,NA,no,multi,,neogoniolithon spectabile,21,165,-2.166666667,1.966666667,Rhodophyta
-wild tobacco,no,,yes,no,multi,,nicotiana attenuata,38,75,6.707482993,2.673469388,Viridiplantae
-diatom,yes,,NA,no,uni,apochlorotic (no chlorophyll),nitzschia alba,32,62,-0.272727273,-48.81818182,Bacillariophyta
-green alga colonial 4 cell,yes,,NA,no,colonial,,oltmannsiellopsis viridis,28,71,-3.292517007,-1.326530612,Viridiplantae
-fern,no,,yes,no,multi,,ophioglossum californicum,36,80,4.707482993,7.673469388,Viridiplantae
-wild rice,no,,yes,no,multi,,oryza minuta,28,76,-3.292517007,3.673469388,Viridiplantae
-wild rice,no,,yes,no,multi,,oryza rufipogon,28,70,-3.292517007,-2.326530612,Viridiplantae
-green alga,yes,,NA,no,?filament,,ostreobium quekettii,33,72,1.707482993,-0.326530612,Viridiplantae
-green alga,yes,,NA,no,uni,,ostreococcus tauri,30,56,-1.292517007,-16.32653061,Viridiplantae
-red alga,yes,,NA,no,multi,,palmaria palmata,24,168,0.833333333,4.966666667,Rhodophyta
-green alga,yes,,NA,no,colonial?,,pectinodesmus pectinatus,13,65,-18.29251701,-7.326530612,Viridiplantae
-green alga,yes,,NA,no,uni,,pedinomonas minor,11,69,-20.29251701,-3.326530612,Viridiplantae
-Shape-flexible diatom,yes,,NA,no,uni,,phaeodactylum tricornutum,29,115,-3.272727273,4.181818182,Bacillariophyta
-bean,no,,yes,no,multi,,phaseolus vulgaris,31,72,-0.292517007,-0.326530612,Viridiplantae
-date palm,no,,no,no,multi,,phoenix dactylifera,37,76,5.707482993,3.673469388,Viridiplantae
-mountain plant,no,,yes,no,multi,,physochlaina orientalis,37,73,5.707482993,0.673469388,Viridiplantae
-green alga,yes,,NA,no,uni,zea perennis,picocystis salinarum,34,74,2.707482993,1.673469388,Viridiplantae
-loblolly pine,no,,no,no,multi,,pinus taeda,39,68,7.707482993,-4.326530612,Viridiplantae
-perennial,no,,yes,no,multi,,platycodon grandiflorus,33,72,1.707482993,-0.326530612,Viridiplantae
-green alga,yes,,NA,no,uni/colonial,,pleodorina starrii,7,62,-24.29251701,-10.32653061,Viridiplantae
-oiltree,no,,no,no,multi,,pongamia pinnata,33,74,1.707482993,1.673469388,Viridiplantae
-aspen,no,,no,no,multi,,populus tremula,33,73,1.707482993,0.673469388,Viridiplantae
-aspen,no,,no,no,multi,,populus tremula x populus alba,32,73,0.707482993,0.673469388,Viridiplantae
-coralline red alga,yes,,NA,no,multi,,porolithon onkodes,22,167,-1.166666667,3.966666667,Rhodophyta
-red alga,yes,,NA,no,multi,,porphyra umbilicalis,23,149,-0.166666667,-14.03333333,Rhodophyta
-green alga,yes,,NA,no,uni/colonial,,prasinoderma coloniale,28,70,-3.292517007,-2.326530612,Viridiplantae
-green alga,yes,,NA,yes,uni?,apochlorotic (no chlorophyll),prototheca bovis,32,18,0.707482993,-54.32653061,Viridiplantae
-green alga,yes,,NA,yes,uni?,apochlorotic (no chlorophyll),prototheca ciferrii,32,18,0.707482993,-54.32653061,Viridiplantae
-sweet cherry,no,,no,no,multi,,prunus avium,25,74,-6.292517007,1.673469388,Viridiplantae
-green alga,yes,,NA,no,uni?,,pycnococcus provasolii,18,62,-13.29251701,-10.32653061,Viridiplantae
-green alga,yes,,NA,no,uni?,,pyramimonas parkeae,33,76,1.707482993,3.673469388,Viridiplantae
-flower,no,,yes,no,multi,,rhazya stricta,38,76,6.707482993,3.673469388,Viridiplantae
-red alga,yes,,NA,no,uni,1 CP,rhodomonas salina,36,122,-2.5,0.5,Cryptophyceae
-liverwort,no,,yes,no,multi,,riccia fluitans,41,83,9.707482993,10.67346939,Viridiplantae
-castor bean,no,,yes,no,multi,,ricinus communis,37,75,5.707482993,2.673469388,Viridiplantae
-desmid alga,yes,,NA,no,uni,,roya obtusa,39,83,7.707482993,10.67346939,Viridiplantae
-sugarcane,no,,yes,no,multi,,saccharum officinarum,19,75,-12.29251701,2.673469388,Viridiplantae
-purple willow,no,,no,no,multi,,salix purpurea,32,73,0.707482993,0.673469388,Viridiplantae
-willow,no,,no,no,multi,,salix suchowensis,32,73,0.707482993,0.673469388,Viridiplantae
-red sage,no,,yes,no,multi,,salvia miltiorrhiza,35,76,3.707482993,3.673469388,Viridiplantae
-moss,no,,yes,no,multi,,sanionia uncinata,39,77,7.707482993,4.673469388,Viridiplantae
-brown alga,yes,,NA,no,multi,,sargassum horneri,34,122,0,5.222222222,Phaeophyceae
-brown alga,yes,,NA,no,multi,,sargassum thunbergii,34,122,0,5.222222222,Phaeophyceae
-green alga,yes,,NA,no,uni,,scherffelia dubia,31,69,-0.292517007,-3.326530612,Viridiplantae
-woody vine,no,,no,no,multi,,schisandra sphenanthera,41,76,9.707482993,3.673469388,Viridiplantae
-legume,no,,mixed,no,multi,,senna occidentalis,33,74,1.707482993,1.673469388,Viridiplantae
-legume,no,,yes,no,multi,,senna tora,32,74,0.707482993,1.673469388,Viridiplantae
-flower,no,,yes,no,multi,,silene latifolia,29,74,-2.292517007,1.673469388,Viridiplantae
+australian shrub,no,perennial,no,no,multi,,acacia ligulata,37,73,5.707482993,0.673469388,Viridiplantae
+chilean red macroalga,yes,NA,NA,no,multi,,agarophyton chilense,24,158,0.833333333,-5.033333333,Rhodophyta
+european weed,no,perennial,yes,no,multi,,ajuga reptans,29,76,-2.292517007,3.673469388,Viridiplantae
+onion,no,perennial,yes,no,multi,,allium cepa,26,73,-5.292517007,0.673469388,Viridiplantae
+asian shrub,no,perennial,no,no,multi,,ammopiptanthus mongolicus,33,73,1.707482993,0.673469388,Viridiplantae
+hornwort,no,annual,yes,no,multi,,anthoceros angustus,20,81,-11.29251701,8.673469388,Viridiplantae
+cress,no,annual,yes,no,multi,,arabidopsis thaliana,31,75,-0.292517007,2.673469388,Viridiplantae
+mountain cress,no,perennial,yes,no,multi,,arabis alpina,31,73,-0.292517007,0.673469388,Viridiplantae
+american weed,no,perennial,yes,no,multi,,asclepias syriaca,36,74,4.707482993,1.673469388,Viridiplantae
+lake/river diatom,yes,NA,NA,no,uni,,asterionella formosa,33,117,0.727272727,6.181818182,Bacillariophyta
+apicomplexan,no,NA,NA,yes,uni,,babesia microti strain ri,3,20,0,-0.5,Apicomplexa
+scani rhodophyte,yes,NA,NA,epiphyte,multi,,balbiania investiens,24,168,0.833333333,4.966666667,Rhodophyta
+brassica,no,annual,yes,no,multi,,brassica juncea,33,75,1.707482993,2.673469388,Viridiplantae
+brassica,no,annual,yes,no,multi,,brassica napus,32,75,0.707482993,2.673469388,Viridiplantae
+brassica,no,annual,yes,no,multi,,brassica nigra,32,75,0.707482993,2.673469388,Viridiplantae
+brassica,no,biennial,yes,no,multi,,brassica oleracea,33,75,1.707482993,2.673469388,Viridiplantae
+intertidal red algae,yes,NA,NA,no,multi,,calliarthron tuberculosum,24,169,0.833333333,5.966666667,Rhodophyta
+tea,no,perennial,no,no,multi,,camellia sinensis,28,76,-3.292517007,3.673469388,Viridiplantae
+cannabis,no,annual,yes,no,multi,,cannabis sativa,35,75,3.707482993,2.673469388,Viridiplantae
+like cress,no,biennial,yes,no,multi,,capsella rubella,31,75,-0.292517007,2.673469388,Viridiplantae
+chili pepper,no,perennial,no,no,multi,,capsicum annuum,37,75,5.707482993,2.673469388,Viridiplantae
+papaya,no,perennial,no,no,multi,,carica papaya,38,75,6.707482993,2.673469388,Viridiplantae
+colombian herb,no,perennial,yes,no,multi,,castilleja paramensis,34,72,2.707482993,-0.326530612,Viridiplantae
+green alga,yes,NA,NA,no,multi,,caulerpa lentillifera,17,72,-14.29251701,-0.326530612,Viridiplantae
+green alga,yes,NA,NA,no,multi,,chara vulgaris,38,86,6.707482993,13.67346939,Viridiplantae
+quinoa,no,annual,yes,no,multi,,chenopodium quinoa,30,75,-1.292517007,2.673469388,Viridiplantae
+unicell green alga,yes,NA,NA,no,uni,,chlamydomonas leiostraca,7,63,-24.29251701,-9.326530612,Viridiplantae
+unicell green alga,yes,NA,NA,no,uni,,chlamydomonas reinhardtii,8,59,-23.29251701,-13.32653061,Viridiplantae
+unicell green alga,yes,NA,NA,no,uni,,chlorella variabilis,31,73,-0.292517007,0.673469388,Viridiplantae
+green alga colonial 2-8 cells,yes,NA,NA,no,colonial,,chlorokybus atmophyticus,38,90,6.707482993,17.67346939,Viridiplantae
+green alga,yes,NA,NA,no,uni,"1 CP, 1 MT",chloroparvula japonica,35,64,3.707482993,-8.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni,"1 CP, 1 MT",chloroparvula pacifica,35,64,3.707482993,-8.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni,"1 CP, 1 MT",chloropicon laureae,34,66,2.707482993,-6.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni,"1 CP, 1 MT",chloropicon mariensis,34,66,2.707482993,-6.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni,"1 CP, 1 MT",chloropicon maureeniae,34,66,2.707482993,-6.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni,"1 CP, 1 MT",chloropicon roscoffensis,34,66,2.707482993,-6.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni,"1 CP, 1 MT",chloropicon sieburthii,34,66,2.707482993,-6.326530612,Viridiplantae
+green alga,yes,NA,NA,no,?uni,,chlorosarcinopsis eremi,7,64,-24.29251701,-8.326530612,Viridiplantae
+chrysanthemum,no,perennial,yes,no,multi,,chrysanthemum boreale,32,74,0.707482993,1.673469388,Viridiplantae
+?green alga,yes,NA,NA,no,uni,,chrysochromulina parva,20,96,0,0,Haptista
+watermelon,no,annual,yes,no,multi,,citrullus lanatus,37,75,5.707482993,2.673469388,Viridiplantae
+orange,no,perennial,no,no,multi,,citrus sinensis,32,75,0.707482993,2.673469388,Viridiplantae
+desmid alga,yes,NA,NA,no,uni,,closterium baillyanum,38,84,6.707482993,11.67346939,Viridiplantae
+brown alga,yes,NA,NA,no,multi,,coccophora langsdorfii,34,121,0,4.222222222,Phaeophyceae
+coconut,no,perennial,no,no,multi,,cocos nucifera,41,76,9.707482993,3.673469388,Viridiplantae
+green alga,yes,NA,NA,no,basic multi,,coleochaete scutata,36,79,4.707482993,6.673469388,Viridiplantae
+littoral red alga,yes,NA,NA,no,multi,,corallina chilensis,24,168,0.833333333,4.966666667,Rhodophyta
+littoral red alga,yes,NA,NA,no,multi,,corallina ferreyrae,23,168,-0.166666667,4.966666667,Rhodophyta
+like jute,no,both,yes,no,multi,,corchorus capsularis,37,75,5.707482993,2.673469388,Viridiplantae
+jute,no,both,yes,no,multi,,corchorus olitorius,35,75,3.707482993,2.673469388,Viridiplantae
+brown kelp,yes,NA,NA,no,multi,,costaria costata,34,119,0,2.222222222,Phaeophyceae
+red algae,yes,NA,NA,no,multi,,crassa caudata,24,162,0.833333333,-1.033333333,Rhodophyta
+cucumber,no,annual,yes,no,multi,,cucumis sativus,37,75,5.707482993,2.673469388,Viridiplantae
+pumpkin,no,annual,yes,no,multi,,cucurbita pepo,37,75,5.707482993,2.673469388,Viridiplantae
+apicomplexan,no,NA,NA,yes,uni,,cyclospora cayetanensis,3,21,0,0.5,Apicomplexa
+diatom,yes,NA,NA,no,uni,2 CP,cylindrotheca closterium,34,115,1.727272727,4.181818182,Bacillariophyta
+green alga,yes,NA,NA,no,?uni,,cymbomonas tetramitiformis,30,72,-1.292517007,-0.326530612,Viridiplantae
+climbing woody vine,no,perennial,no,no,multi,,cynanchum auriculatum,24,76,-7.292517007,3.673469388,Viridiplantae
+red alga,yes,NA,NA,no,multi,,dasya binghamiae,22,157,-1.166666667,-6.033333333,Rhodophyta
+Yellow-brown alga,yes,NA,NA,no,multi,,dictyopteris divaricata,34,118,0,1.222222222,Phaeophyceae
+diatom “rock snot”,yes,NA,NA,no,uni,,didymosphenia geminata,33,116,0.727272727,5.181818182,Bacillariophyta
+american flower,no,perennial,yes,no,multi,,diplostephium hartwegii,35,76,3.707482993,3.673469388,Viridiplantae
+flower,no,perennial,yes,no,multi,,dorcoceras hygrometricum,30,72,-1.292517007,-0.326530612,Viridiplantae
+halophile green alga,yes,NA,NA,no,uni,,dunaliella salina,7,63,-24.29251701,-9.326530612,Viridiplantae
+grass,no,annual,yes,no,multi,,eleusine indica,33,75,1.707482993,2.673469388,Viridiplantae
+brown alga,yes,NA,NA,no,multi,,endarachne binghamiae,34,120,0,3.222222222,Phaeophyceae
+green alga,yes,NA,NA,no,?filament,,entransia fimbriata,32,82,0.707482993,9.673469388,Viridiplantae
+loquat fruit,no,perennial,no,no,multi,,eriobotrya japonica,33,75,1.707482993,2.673469388,Viridiplantae
+gum tree,no,perennial,no,no,multi,,eucalyptus grandis,37,67,5.707482993,-5.326530612,Viridiplantae
+Freshwater diatom,yes,NA,NA,no,uni,,eunotia naegelii,33,120,0.727272727,9.181818182,Bacillariophyta
+marine diatom,yes,NA,NA,no,uni,,fistulifera solaris,33,113,0.727272727,2.181818182,Bacillariophyta
+brown seaweed,yes,NA,NA,no,multi,,fucus vesiculosus,34,121,0,4.222222222,Phaeophyceae
+unicell extremophile rhodophyte,yes,NA,NA,no,uni,,galdieria sulphuraria,18,154,-5.166666667,-9.033333333,Rhodophyta
+red algae,yes,NA,NA,no,multi,,gelidium coulteri,23,164,-0.166666667,0.966666667,Rhodophyta
+red algae,yes,NA,NA,no,multi,,gelidium gabrielsonii,23,164,-0.166666667,0.966666667,Rhodophyta
+red algae,yes,NA,NA,no,multi,,gelidium galapagense,23,164,-0.166666667,0.966666667,Rhodophyta
+red algae,yes,NA,NA,no,multi,,gelidium kathyanniae,23,164,-0.166666667,0.966666667,Rhodophyta
+red algae,yes,NA,NA,no,multi,,gelidium sinicola,23,164,-0.166666667,0.966666667,Rhodophyta
+red algae,yes,NA,NA,no,multi,,gelidium vagum,23,164,-0.166666667,0.966666667,Rhodophyta
+madeiran flower,no,biennial,yes,no,multi,,geranium maderense,27,74,-4.292517007,1.673469388,Viridiplantae
+gymnosperm tree,no,perennial,no,no,multi,,ginkgo biloba,40,79,8.707482993,6.673469388,Viridiplantae
+unicellular alga,yes,NA,NA,no,uni,Blue-green CP,gloeochaete wittrockiana,32,108,0,0,Glaucocystophyceae
+soybean,no,annual,yes,no,multi,,glycine max,32,74,0.707482993,1.673469388,Viridiplantae
+wild soybean,no,annual,yes,no,multi,,glycine soja,31,74,-0.292517007,1.673469388,Viridiplantae
+green alga colonial 4-16 cell,yes,NA,NA,no,colonial,,gonium pectorale,7,61,-24.29251701,-11.32653061,Viridiplantae
+cotton,no,perennial,no,no,multi,,gossypium arboreum,36,74,4.707482993,1.673469388,Viridiplantae
+cotton,no,perennial,no,no,multi,,gossypium barbadense,36,75,4.707482993,2.673469388,Viridiplantae
+cotton,no,perennial,no,no,multi,,gossypium davidsonii,36,75,4.707482993,2.673469388,Viridiplantae
+cotton,no,perennial,no,no,multi,,gossypium harknessii,32,75,0.707482993,2.673469388,Viridiplantae
+cotton,no,perennial,no,no,multi,,gossypium hirsutum,33,74,1.707482993,1.673469388,Viridiplantae
+cotton,no,perennial,no,no,multi,,gossypium raimondii,36,74,4.707482993,1.673469388,Viridiplantae
+cotton,no,perennial,no,no,multi,,gossypium thurberi,36,74,4.707482993,1.673469388,Viridiplantae
+cotton,no,perennial,no,no,multi,,gossypium trilobum,36,75,4.707482993,2.673469388,Viridiplantae
+red alga,yes,NA,NA,no,multi,,gracilaria ferox,24,162,0.833333333,-1.033333333,Rhodophyta
+red alga,yes,NA,NA,no,multi,,gracilaria gracilis,24,162,0.833333333,-1.033333333,Rhodophyta
+red alga,yes,NA,NA,no,multi,,gracilariopsis heteroclada,24,164,0.833333333,0.966666667,Rhodophyta
+red alga,yes,NA,NA,no,multi,,gracilariopsis longissima,24,162,0.833333333,-1.033333333,Rhodophyta
+red alga,yes,NA,NA,no,multi,,gracilariopsis mclachlanii,24,162,0.833333333,-1.033333333,Rhodophyta
+liverwort,no,perennial,yes,no,multi,,gymnomitrion concinnatum,41,82,9.707482993,9.673469388,Viridiplantae
+brazilian tree,no,perennial,no,no,multi,,haematoxylum brasiletto,37,74,5.707482993,1.673469388,Viridiplantae
+blue marine diatom,yes,NA,NA,no,uni,,haslea nusantara,31,116,-1.272727273,5.181818182,Bacillariophyta
+sunflower,no,annual,yes,no,multi,,helianthus annuus,24,76,-7.292517007,3.673469388,Viridiplantae
+extinct plant,no,unknown,yes,no,multi,,hesperelaea palmeri,37,68,5.707482993,-4.326530612,Viridiplantae
+red alga,yes,NA,NA,no,multi,,hydropuntia rangiferina,24,162,0.833333333,-1.033333333,Rhodophyta
+nightshade,no,biennial,yes,no,multi,,hyoscyamus niger,37,75,5.707482993,2.673469388,Viridiplantae
+japanese flower,no,annual,yes,no,multi,,ipomoea nil,30,75,-1.292517007,2.673469388,Viridiplantae
+sea moss red alga,yes,NA,NA,no,multi,,kappaphycus alvarezii,24,165,0.833333333,1.966666667,Rhodophyta
+lettuce,no,annual,yes,no,multi,,lactuca sativa,31,76,-0.292517007,3.673469388,Viridiplantae
+myrtle bush,no,perennial,no,no,multi,,lagerstroemia indica,36,75,4.707482993,2.673469388,Viridiplantae
+brown seaweed,yes,NA,NA,no,multi,,laminaria digitata,34,89,0,-27.77777778,Phaeophyceae
+hornwort,no,unknown,yes,no,multi,,leiosporoceros dussii,23,83,-8.292517007,10.67346939,Viridiplantae
+grey kelp,yes,NA,NA,no,multi,,lessonia spicata,34,119,0,2.222222222,Phaeophyceae
+rainforest shrub,no,perennial,no,no,multi,,leucaena trichandra,35,74,3.707482993,1.673469388,Viridiplantae
+shrub,no,perennial,no,no,multi,,libidibia coriaria,37,75,5.707482993,2.673469388,Viridiplantae
+tulip tree,no,perennial,no,no,multi,,liriodendron tulipifera,41,75,9.707482993,2.673469388,Viridiplantae
+legume,no,perennial,yes,no,multi,,lotus japonicus,31,74,-0.292517007,1.673469388,Viridiplantae
+cassava,no,perennial,no,no,multi,,manihot esculenta,32,75,0.707482993,2.673469388,Viridiplantae
+turkish red alga,yes,NA,NA,no,multi,,mastocarpus papillatus,24,164,0.833333333,0.966666667,Rhodophyta
+legume,no,annual,yes,no,multi,,medicago truncatula,31,73,-0.292517007,0.673469388,Viridiplantae
+red alga,yes,NA,NA,no,multi,,melanthalia intermedia,24,161,0.833333333,-2.033333333,Rhodophyta
+mulberry,no,perennial,no,no,multi,,morus notabilis,26,75,-5.292517007,2.673469388,Viridiplantae
+green alga,yes,NA,NA,no,uni,,mychonastes homosphaera,13,65,-18.29251701,-7.326530612,Viridiplantae
+lotus aquatic,no,perennial,yes,no,multi,,nelumbo nucifera,40,75,8.707482993,2.673469388,Viridiplantae
+red alga,yes,NA,NA,no,multi,,neogoniolithon spectabile,21,165,-2.166666667,1.966666667,Rhodophyta
+wild tobacco,no,annual,yes,no,multi,,nicotiana attenuata,38,75,6.707482993,2.673469388,Viridiplantae
+diatom,yes,NA,NA,no,uni,apochlorotic (no chlorophyll),nitzschia alba,32,62,-0.272727273,-48.81818182,Bacillariophyta
+green alga colonial 4 cell,yes,NA,NA,no,colonial,,oltmannsiellopsis viridis,28,71,-3.292517007,-1.326530612,Viridiplantae
+fern,no,perennial,yes,no,multi,,ophioglossum californicum,36,80,4.707482993,7.673469388,Viridiplantae
+wild rice,no,perennial,yes,no,multi,,oryza minuta,28,76,-3.292517007,3.673469388,Viridiplantae
+wild rice,no,perennial,yes,no,multi,,oryza rufipogon,28,70,-3.292517007,-2.326530612,Viridiplantae
+green alga,yes,NA,NA,no,?filament,,ostreobium quekettii,33,72,1.707482993,-0.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni,,ostreococcus tauri,30,56,-1.292517007,-16.32653061,Viridiplantae
+red alga,yes,NA,NA,no,multi,,palmaria palmata,24,168,0.833333333,4.966666667,Rhodophyta
+green alga,yes,NA,NA,no,colonial?,,pectinodesmus pectinatus,13,65,-18.29251701,-7.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni,,pedinomonas minor,11,69,-20.29251701,-3.326530612,Viridiplantae
+Shape-flexible diatom,yes,NA,NA,no,uni,,phaeodactylum tricornutum,29,115,-3.272727273,4.181818182,Bacillariophyta
+bean,no,annual,yes,no,multi,,phaseolus vulgaris,31,72,-0.292517007,-0.326530612,Viridiplantae
+date palm,no,perennial,no,no,multi,,phoenix dactylifera,37,76,5.707482993,3.673469388,Viridiplantae
+mountain plant,no,perennial,yes,no,multi,,physochlaina orientalis,37,73,5.707482993,0.673469388,Viridiplantae
+green alga,yes,NA,NA,no,uni,zea perennis,picocystis salinarum,34,74,2.707482993,1.673469388,Viridiplantae
+loblolly pine,no,perennial,no,no,multi,,pinus taeda,39,68,7.707482993,-4.326530612,Viridiplantae
+perennial,no,perennial,yes,no,multi,,platycodon grandiflorus,33,72,1.707482993,-0.326530612,Viridiplantae
+green alga,yes,NA,NA,no,uni/colonial,,pleodorina starrii,7,62,-24.29251701,-10.32653061,Viridiplantae
+oiltree,no,perennial,no,no,multi,,pongamia pinnata,33,74,1.707482993,1.673469388,Viridiplantae
+aspen,no,perennial,no,no,multi,,populus tremula,33,73,1.707482993,0.673469388,Viridiplantae
+aspen,no,perennial,no,no,multi,,populus tremula x populus alba,32,73,0.707482993,0.673469388,Viridiplantae
+coralline red alga,yes,NA,NA,no,multi,,porolithon onkodes,22,167,-1.166666667,3.966666667,Rhodophyta
+red alga,yes,NA,NA,no,multi,,porphyra umbilicalis,23,149,-0.166666667,-14.03333333,Rhodophyta
+green alga,yes,NA,NA,no,uni/colonial,,prasinoderma coloniale,28,70,-3.292517007,-2.326530612,Viridiplantae
+green alga,yes,NA,NA,yes,uni?,apochlorotic (no chlorophyll),prototheca bovis,32,18,0.707482993,-54.32653061,Viridiplantae
+green alga,yes,NA,NA,yes,uni?,apochlorotic (no chlorophyll),prototheca ciferrii,32,18,0.707482993,-54.32653061,Viridiplantae
+sweet cherry,no,perennial,no,no,multi,,prunus avium,25,74,-6.292517007,1.673469388,Viridiplantae
+green alga,yes,NA,NA,no,uni?,,pycnococcus provasolii,18,62,-13.29251701,-10.32653061,Viridiplantae
+green alga,yes,NA,NA,no,uni?,,pyramimonas parkeae,33,76,1.707482993,3.673469388,Viridiplantae
+flower,no,perennial,no,no,multi,,rhazya stricta,38,76,6.707482993,3.673469388,Viridiplantae
+red alga,yes,NA,NA,no,uni,1 CP,rhodomonas salina,36,122,-2.5,0.5,Cryptophyceae
+liverwort aquatic,no,perennial,yes,no,multi,,riccia fluitans,41,83,9.707482993,10.67346939,Viridiplantae
+castor bean,no,perennial,yes,no,multi,,ricinus communis,37,75,5.707482993,2.673469388,Viridiplantae
+desmid alga,yes,NA,NA,no,uni,,roya obtusa,39,83,7.707482993,10.67346939,Viridiplantae
+sugarcane,no,perennial,yes,no,multi,,saccharum officinarum,19,75,-12.29251701,2.673469388,Viridiplantae
+purple willow,no,perennial,no,no,multi,,salix purpurea,32,73,0.707482993,0.673469388,Viridiplantae
+willow,no,perennial,no,no,multi,,salix suchowensis,32,73,0.707482993,0.673469388,Viridiplantae
+red sage,no,perennial,yes,no,multi,,salvia miltiorrhiza,35,76,3.707482993,3.673469388,Viridiplantae
+moss,no,unknown,yes,no,multi,,sanionia uncinata,39,77,7.707482993,4.673469388,Viridiplantae
+brown alga,yes,NA,NA,no,multi,,sargassum horneri,34,122,0,5.222222222,Phaeophyceae
+brown alga,yes,NA,NA,no,multi,,sargassum thunbergii,34,122,0,5.222222222,Phaeophyceae
+green alga,yes,NA,NA,no,uni,,scherffelia dubia,31,69,-0.292517007,-3.326530612,Viridiplantae
+woody vine,no,perennial,no,no,multi,,schisandra sphenanthera,41,76,9.707482993,3.673469388,Viridiplantae
+legume,no,both,mixed,no,multi,,senna occidentalis,33,74,1.707482993,1.673469388,Viridiplantae
+legume,no,annual,yes,no,multi,,senna tora,32,74,0.707482993,1.673469388,Viridiplantae
+flower,no,both,yes,no,multi,,silene latifolia,29,74,-2.292517007,1.673469388,Viridiplantae
 mustard,no,annual,yes,no,multi,,sinapis arvensis,32,75,0.707482993,2.673469388,Viridiplantae
-tomato,no,,yes,no,multi,,solanum lycopersicum,33,76,1.707482993,3.673469388,Viridiplantae
-tomato,no,,yes,no,multi,,solanum pennellii,37,76,5.707482993,3.673469388,Viridiplantae
+tomato,no,perennial,yes,no,multi,,solanum lycopersicum,33,76,1.707482993,3.673469388,Viridiplantae
+tomato,no,perennial,yes,no,multi,,solanum pennellii,37,76,5.707482993,3.673469388,Viridiplantae
 millet,no,annual,yes,no,multi,,sorghum bicolor,32,75,0.707482993,2.673469388,Viridiplantae
-moss,no,NA,no,no,multi,,sphagnum palustre,39,79,7.707482993,6.673469388,Viridiplantae
-duckweed,no,,yes,no,multi,,spirodela polyrhiza,35,75,3.707482993,2.673469388,Viridiplantae
+moss,no,perennial,no,no,multi,,sphagnum palustre,39,79,7.707482993,6.673469388,Viridiplantae
+duckweed aquatic,no,perennial,yes,no,multi,,spirodela polyrhiza,35,75,3.707482993,2.673469388,Viridiplantae
 bryophyte,no,annual,yes,no,multi,,stoneobryum bunyaense,39,77,7.707482993,4.673469388,Viridiplantae
 tamarind,no,evergreen,no,no,multi,,tamarindus indica,34,74,2.707482993,1.673469388,Viridiplantae
-alga,yes,,NA,no,uni,,teleaulax amphioxeia,41,121,2.5,-0.5,Cryptophyceae
-green alga,yes,,NA,no,uni/colonial,,tetradesmus obliquus,13,65,-18.29251701,-7.326530612,Viridiplantae
-moss,no,,yes,no,multi,,tetraphis pellucida,38,77,6.707482993,4.673469388,Viridiplantae
-marine diatom,yes,,NA,no,uni,,thalassiosira pseudonana,33,112,0.727272727,1.181818182,Bacillariophyta
-red alga,yes,,NA,no,multi,,thorea hispida,23,166,-0.166666667,2.966666667,Rhodophyta
-diatom,yes,,NA,no,?uni,,toxarium undulatum,33,118,0.727272727,7.181818182,Bacillariophyta
-Yellow-green alga,yes,,NA,no,?uni,,trachydiscus minutus,36,118,0,0,Eustigmatophyceae
-alga,yes,,NA,no,uni,,triparma laevis,34,123,0,0,Bolidophyceae
+alga,yes,NA,NA,no,uni,,teleaulax amphioxeia,41,121,2.5,-0.5,Cryptophyceae
+green alga,yes,NA,NA,no,uni/colonial,,tetradesmus obliquus,13,65,-18.29251701,-7.326530612,Viridiplantae
+moss,no,unknown,yes,no,multi,,tetraphis pellucida,38,77,6.707482993,4.673469388,Viridiplantae
+marine diatom,yes,NA,NA,no,uni,,thalassiosira pseudonana,33,112,0.727272727,1.181818182,Bacillariophyta
+red alga,yes,NA,NA,no,multi,,thorea hispida,23,166,-0.166666667,2.966666667,Rhodophyta
+diatom,yes,NA,NA,no,?uni,,toxarium undulatum,33,118,0.727272727,7.181818182,Bacillariophyta
+Yellow-green alga,yes,NA,NA,no,?uni,,trachydiscus minutus,36,118,0,0,Eustigmatophyceae
+alga,yes,NA,NA,no,uni,,triparma laevis,34,123,0,0,Bolidophyceae
 grass,no,perennial,yes,no,multi,,tripsacum dactyloides,31,67,-0.292517007,-5.326530612,Viridiplantae
-wheat,no,,no,no,multi,,triticum aestivum,33,75,1.707482993,2.673469388,Viridiplantae
-like wheat,no,,no,no,multi,,triticum timopheevii,33,75,1.707482993,2.673469388,Viridiplantae
-diatom,yes,,NA,no,uni,,ulnaria acus,31,115,-1.272727273,4.181818182,Bacillariophyta
-green alga,yes,,NA,no,multi,,ulva linza,28,63,-3.292517007,-9.326530612,Viridiplantae
-green alga,yes,,NA,no,multi,,ulva prolifera,30,63,-1.292517007,-9.326530612,Viridiplantae
+wheat,no,perennial,no,no,multi,,triticum aestivum,33,75,1.707482993,2.673469388,Viridiplantae
+like wheat,no,perennial,no,no,multi,,triticum timopheevii,33,75,1.707482993,2.673469388,Viridiplantae
+diatom,yes,NA,NA,no,uni,,ulnaria acus,31,115,-1.272727273,4.181818182,Bacillariophyta
+green alga,yes,NA,NA,no,multi,,ulva linza,28,63,-3.292517007,-9.326530612,Viridiplantae
+green alga,yes,NA,NA,no,multi,,ulva prolifera,30,63,-1.292517007,-9.326530612,Viridiplantae
 cranberry,no,perennial,no,no,multi,,vaccinium macrocarpon,33,66,1.707482993,-6.326530612,Viridiplantae
-red alga,yes,,NA,no,multi,,vertebrata lanosa,23,165,-0.166666667,1.966666667,Rhodophyta
+red alga,yes,NA,NA,no,multi,,vertebrata lanosa,23,165,-0.166666667,1.966666667,Rhodophyta
 legume,no,annual,yes,no,multi,,vigna angularis,25,71,-6.292517007,-1.326530612,Viridiplantae
 legume,no,annual,yes,no,multi,,vigna radiata,31,72,-0.292517007,-0.326530612,Viridiplantae
-grape,no,,no,no,multi,,vitis vinifera,42,76,10.70748299,3.673469388,Viridiplantae
-desert gymnosperm,no,,no,no,multi,,welwitschia mirabilis,29,62,-2.292517007,-10.32653061,Viridiplantae
-red alga,yes,,NA,no,multi,,wildemania schizophylla,22,159,-1.166666667,-4.033333333,Rhodophyta
-green alga,yes,,NA,no,colonial,,yamagishiella unicocca,8,62,-23.29251701,-10.32653061,Viridiplantae
+grape,no,perennial,no,no,multi,,vitis vinifera,42,76,10.70748299,3.673469388,Viridiplantae
+desert gymnosperm,no,perennial,no,no,multi,,welwitschia mirabilis,29,62,-2.292517007,-10.32653061,Viridiplantae
+red alga,yes,NA,NA,no,multi,,wildemania schizophylla,22,159,-1.166666667,-4.033333333,Rhodophyta
+green alga,yes,NA,NA,no,colonial,,yamagishiella unicocca,8,62,-23.29251701,-10.32653061,Viridiplantae
 grass,no,annual,yes,no,multi,,zea luxurians,32,75,0.707482993,2.673469388,Viridiplantae
 grass,no,annual,yes,no,multi,,zea perennis,31,75,-0.292517007,2.673469388,Viridiplantae
-jujube date,no,,no,no,multi,,ziziphus jujuba,35,75,3.707482993,2.673469388,Viridiplantae
-eelgrass,no,,yes,no,multi,,zostera marina,25,69,-6.292517007,-3.326530612,Viridiplantae
+jujube date,no,perennial,no,no,multi,,ziziphus jujuba,35,75,3.707482993,2.673469388,Viridiplantae
+eelgrass aquatic,no,both,yes,no,multi,,zostera marina,25,69,-6.292517007,-3.326530612,Viridiplantae
