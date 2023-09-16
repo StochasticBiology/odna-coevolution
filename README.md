@@ -6,3 +6,4 @@ Several substudies here. Phylogenetic information, gene counts, and gene content
 To do:
 * Truncate the gene dendrogram at an early stage and use that to assign gene tribes, like Kazeem's tribes of AMR genes -- _can do but need to think more thoughtfully_
 * PLM plotting: assign a relatedness index to each datapoint based on e.g. number of partners within a given distance, or distance to 50% of the data, then use that as opacity in a scatter plot with PLM fit overlaid -- _somewhat done_
+* does Oncotrees do the same as skeleton algo
