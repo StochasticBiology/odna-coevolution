@@ -200,6 +200,33 @@ g.tree = ggtree(both.tree, layout='circular', branch.length='none', alpha=1) %<+
              size=0.2, color="#0000FF") +
   theme(legend.position="none")
 
+tree.labs = c(both.tree$tip.label, both.tree$node.label)
+
+clades.interest = c("Rhodophyta", "Apicomplexa", "Streptophyta", "Chlorophyceae")
+
+# experiment with other visualisations
+ggtree(both.tree, layout='circular', branch.length='none', alpha=1) %<+% mydf3 +
+  geom_fruit(geom=geom_col, pwidth=1, alpha=0.2,
+             mapping = aes(x=pt, y=label), 
+             size=0.2, color="#FF0000") +
+  geom_fruit(geom=geom_col, pwidth=1, offset=-1, alpha=0.2,
+             mapping = aes(x=mt, y=label), 
+             size=0.2, color="#0000FF") +
+  #geom_cladelab(node=rhodo.ref, label="Rhodophyta") +
+  geom_hilight(mapping=aes(subset = node %in% which(tree.labs %in% clades.interest), fill=nodelab(both.tree, node)),
+               type = "gradient", gradient.direction = 'rt',
+               alpha = .2) #+
+#  theme(legend.position="none")
+
+ggtree(both.tree, layout='circular', branch.length='none', alpha=1) %<+% mydf3 +
+  geom_fruit(geom=geom_col, pwidth=1, alpha=0.2, offset=1,
+             mapping = aes(x=ptnorm, y=label), 
+             size=0.2, color="#FF0000") +
+  geom_fruit(geom=geom_col, pwidth=1, offset=0, alpha=0.2,
+             mapping = aes(x=mtnorm, y=label), 
+             size=0.2, color="#0000FF") +
+  theme(legend.position="none")
+
 #####################
 # phylo linear model with clade correction
 plm.norm = phylolm(ptnorm~mtnorm, mydf3, both.tree, model="BM")
@@ -271,6 +298,70 @@ grid.arrange( g.dumb.lm + ggtitle(tstr(sum.df[1,])),
 dev.off()
 
 write.table(mydf2, "species-list.csv",  row.names=FALSE, col.names = FALSE, sep=",")
+
+#### try and account for phylogenetic weighting -- work in progress
+mydf3$phyloweight = 0
+ntips = length(both.tree$tip.label)
+plm = phylolm(pt~mt, mydf3, both.tree, model="BM", boot=1000)
+plm.df = data.frame()
+for(new.x in 0:50) {
+  new.pred = plm$bootstrap[,1]+plm$bootstrap[,2]*new.x
+  plm.df = rbind(plm.df, data.frame(x=new.x, hi=quantile(new.pred, 0.975), mean=mean(new.pred), fit=plm$coefficients[1]+plm$coefficients[2]*new.x, lo=quantile(new.pred, 0.025)))
+}
+
+vcv = vcvPhylo(both.tree)[1:ntips,1:ntips]
+vcv.i = solve(vcv)
+for(i in 1:length(colnames(vcv))) {
+  this.sum = colSums(vcv)[i]
+  this.name = colnames(vcv)[i]
+   mydf3$phyloweight[mydf3$label==this.name] = 1/(1+this.sum)
+}
+g.plm.opacity.1 = ggplot() +
+  geom_ribbon(data=plm.df, aes(x=x,ymin=lo,ymax=hi),alpha=0.2,fill="#0000FF") +
+  geom_line(data=plm.df, aes(x=x,y=mean),alpha=1,color=1) +
+  geom_point(data=mydf3, aes(x=mt, y=pt, alpha=phyloweight, color=clade)) + 
+  geom_text_repel(data=mydf3, aes(x=mt,y=pt,label=label,color=clade),size=2,alpha=1) +
+  theme_classic()
+
+plmnorm = phylolm(ptnorm~mtnorm, mydf3, both.tree, model="BM", boot=1000)
+plmnorm.df = data.frame()
+for(new.x in -25:25) {
+  new.pred = plmnorm$bootstrap[,1]+plmnorm$bootstrap[,2]*new.x
+  plmnorm.df = rbind(plmnorm.df, data.frame(x=new.x, hi=quantile(new.pred, 0.975), mean=mean(new.pred), fit=plm$coefficients[1]+plm$coefficients[2]*new.x, lo=quantile(new.pred, 0.025)))
+}
+
+g.plm.opacity.2 = ggplot() +
+  geom_ribbon(data=plmnorm.df, aes(x=x,ymin=lo,ymax=hi),alpha=0.2,fill="#0000FF") +
+  geom_line(data=plmnorm.df, aes(x=x,y=mean),alpha=1,color=1) +
+  geom_point(data=mydf3, aes(x=mtnorm, y=ptnorm, alpha=phyloweight, color=clade)) + 
+  geom_text_repel(data=mydf3, aes(x=mtnorm,y=ptnorm,label=label,color=clade),size=2,alpha=1) +
+  theme_classic()
+
+png("fig-1a.png", width=800*sf, height=600*sf, res=72*sf)
+grid.arrange( g.dumb.lm + geom_text_repel(aes(label=label, color=clade), size=2) + ggtitle(tstr(sum.df[1,])),
+              g.normalised.lm + geom_text_repel(aes(label=label, color=clade), size=2) + ggtitle(tstr(sum.df[2,])),
+              g.plm.opacity.1 + ggtitle(tstr(sum.df[5,])),
+              g.plm.opacity.2 + ggtitle(tstr(sum.df[6,])), nrow=2)
+dev.off()
+
+######### chuck rhodophyta
+mylm.no.rhodo = lm(pt ~ mt, data=mydf3[mydf3$clade!="Rhodophyta",])
+summary(mylm.no.rhodo)
+ggplot(mydf3[mydf3$clade!="Rhodophyta",], aes(x=mt, y=pt)) + geom_smooth(method="lm", alpha=0.2) +
+  geom_point(aes(x=mt,y=pt,color=clade)) +
+  theme_classic()
+
+summary(mylm)
+
+###### outliers
+
+mynlm = lm(ptnorm ~ mtnorm, data=mydf3)
+summary(mynlm)
+plot(mydf3$mtnorm, mydf3$ptnorm)
+no.out.df = mydf3[mydf3$ptnorm > -15 | mydf3$mtnorm < -15,]
+mynlm.no.out = lm(ptnorm ~ mtnorm, data=no.out.df)
+summary(mynlm.no.out)
+plot(no.out.df$mtnorm, no.out.df$ptnorm)
 
 ############
 
@@ -347,6 +438,13 @@ mod.a.nlmm = lme(ptnorm ~ mtnorm, random = ~ mtnorm | herbaceous, control=ctrl, 
 mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | herbaceous, control=ctrl, data = df, method="ML")
 AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
 
+df$broad.timing[is.na(df$broad.timing)] = "undefined"
+mod.lm = lm(ptnorm ~ mtnorm, data = df)
+#mod.nlmm = lmer(ptnorm ~ mtnorm + (mtnorm | herbaceous), data = df, method="ML")
+#mod.nlmm1 = lmer(ptnorm ~ mtnorm + (1 | herbaceous), data = df, method="ML")
+mod.a.nlmm = lme(ptnorm ~ mtnorm, random = ~ mtnorm | broad.timing, control=ctrl, data = df, method="ML")
+mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | broad.timing, control=ctrl, data = df, method="ML")
+AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
 
 ########### explore clustering of genes across different organelles
 
@@ -387,6 +485,8 @@ png("odna-heatmap-genes.png", width=1200*sf, height=400*sf, res=72*sf)
 plot(ph$tree_col, cex=0.5)
 dev.off()
 
+clusters = cutree(ph$tree_col, k=10)
+which(clusters==1)
 
 ######## oncotree treatment of the loss behaviour
 otree = oncotree.fit(1-amal.mat.uniq)
