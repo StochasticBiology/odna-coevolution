@@ -444,6 +444,15 @@ mod.a.nlmm = lme(ptnorm ~ mtnorm, random = ~ mtnorm | broad.timing, control=ctrl
 mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | broad.timing, control=ctrl, data = df, method="ML")
 AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
 
+df$green = "no"
+df$green[which(grepl("reen", df$notes) | df$herbaceous != "undefined")] = "yes"
+mod.lm = lm(ptnorm ~ mtnorm, data = df)
+#mod.nlmm = lmer(ptnorm ~ mtnorm + (mtnorm | herbaceous), data = df, method="ML")
+#mod.nlmm1 = lmer(ptnorm ~ mtnorm + (1 | herbaceous), data = df, method="ML")
+mod.a.nlmm = lme(ptnorm ~ mtnorm, random = ~ mtnorm | green, control=ctrl, data = df, method="ML")
+mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | green, control=ctrl, data = df, method="ML")
+AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
+
 ########### explore clustering of genes across different organelles
 
 mt.df = read.csv("mt-barcodes-manual.csv")
