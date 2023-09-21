@@ -23,9 +23,31 @@ convname = function(str) {
   return(tolower(gsub("\'", "", gsub("_", " ", str))))
 }
 
-# read phylogeny previously downloaded from Common Taxonomy Tree. this has previously been cleaned:
-# (i) all one line; (ii) extra set of brackets wrap the whole entity; (iii) nodes names don't contain special characters
-tree = read.newick("tree-for-traits-clean-mt.phy")
+mt.df = read.csv("mt-barcodes-manual.csv")
+colnames(mt.df) = paste("MT", colnames(mt.df), sep="-")
+mt.df$count = rowSums(mt.df[,2:ncol(mt.df)])
+
+pt.df = read.csv("pt-barcodes-manual.csv")
+colnames(pt.df) = paste("PT", colnames(pt.df), sep="-")
+pt.df$count = rowSums(pt.df[,2:ncol(pt.df)])
+
+mt.set = mt.df$`MT-Species`
+pt.set = pt.df$`PT-Species`
+
+both.set = intersect(mt.set, pt.set)
+
+both.df = data.frame(label=both.set, countsMT=0, countsPT=0)
+for(i in 1:nrow(both.df)) {
+  mt.ref = which(mt.df$`MT-Species` == both.df$label[i])
+  both.df$countsMT[i] = mt.df$count[mt.ref]
+  pt.ref = which(pt.df$`PT-Species` == both.df$label[i])
+  both.df$countsPT[i] = pt.df$count[pt.ref]
+}
+
+ggplot(both.df, aes(x=countsMT,y=countsPT)) + geom_point()
+write.table(both.df$label, "update-species.txt", row.names=FALSE, col.names=FALSE, quote=FALSE)
+
+tree = read.newick("update-species.phy")
 #my.correlation = corBrownian(phy=tree)
 tree$tip.label = convname(tree$tip.label)
 tree.labels = c(tree$tip.label, tree$node.label)
@@ -33,35 +55,24 @@ root = which(tree.labels=="Eukaryota")
 clade.refs = Children(tree, root)
 clade.names = tree.labels[clade.refs]
 
-# read Kostas' dataset
-df = read.table("MTFull22.txt", sep="\t", header=T, stringsAsFactors = TRUE)
+########
 
-# manually fix bugs
-df$plant.growth.form[which(df$Scientific.Name=="triodia sylvina")] = NA
-df$life.cycle.habit[grep("lucilia", df$Scientific.Name)] = NA
 
-# the dataset is read as factors by default -- we'll awkwardly convert between data types
-df$Scientific.Name = as.character(df$Scientific.Name)
-df$Ancestry = as.character(df$Ancestry)
-
-df$clade = ""
+both.df$clade = ""
 to.drop = c()
-for(i in 1:nrow(df)) {
-  tip.ref = which(tree.labels == df$Scientific.Name[i])
+for(i in 1:nrow(both.df)) {
+  tip.ref = which(tree.labels == both.df$label[i])
   if(length(tip.ref) > 0) {
     ancestors = Ancestors(tree, tip.ref)
     ancestor = ancestors[which(ancestors %in% clade.refs)]
-    df$clade[i] = tree.labels[ancestor]
+    both.df$clade[i] = tree.labels[ancestor]
   } else {
     to.drop = c(to.drop, i)
   }
 }
 
-df = df[-to.drop,]
+both.df = both.df[-to.drop,]
 
-mt.df = df
-
-both.df = mt.df[which(!is.na(mt.df$countsMT) & !is.na(mt.df$countsPT)),]
 both.df$countsMTnorm = 0
 both.df$countsPTnorm = 0
 for(clade in unique(both.df$clade)) {
@@ -71,10 +82,11 @@ for(clade in unique(both.df$clade)) {
   both.df$countsPTnorm[both.df$clade == clade] = both.df$countsPT[both.df$clade == clade]-meanPT
 }
 
-both.labels = which(tree$tip.label %in% both.df$Scientific.Name)
+both.labels = which(tree$tip.label %in% both.df$label)
 both.tree = keep.tip(tree, both.labels)
+ggplot(both.df, aes(x=countsMT,y=countsPT,color=clade)) + geom_point()
 
-mydf2 = data.frame(label=both.df$Scientific.Name, 
+mydf2 = data.frame(label=both.df$label, 
                    x=both.df$countsMT, 
                    y=both.df$countsPT, 
                    xnorm = both.df$countsMTnorm, 
@@ -86,19 +98,19 @@ rownames(mydf2) = mydf2$label
 #for(expt in c(1,2,3)) {
 for(expt in c(1, 2, 3, 4)) {
   if(expt == 1) { 
-    mydf3 = mydf2; outstr = "coevol-all.png" 
+    mydf3 = mydf2; outstr = "coevol-update-all.png" 
   } else if(expt == 2) { 
     to.prune = which(mydf2$label %in% c("laminaria digitata", "nitzschia alba", "prototheca bovis", "prototheca ciferrii", "epirixanthes elongata", "nepenthes ventricosa x nepenthes alata", "choreocolax polysiphoniae"))
     mydf3 = mydf2[-to.prune,] 
-    mydf3 = mydf3[mydf3$clade == "Viridiplantae",]; outstr = "coevol-plants.png" 
+    mydf3 = mydf3[mydf3$clade == "Viridiplantae",]; outstr = "coevol-update-plants.png" 
   } else if(expt == 3) { 
     to.prune = which(mydf2$label %in% c("laminaria digitata", "nitzschia alba", "prototheca bovis", "prototheca ciferrii", "epirixanthes elongata", "nepenthes ventricosa x nepenthes alata", "choreocolax polysiphoniae"))
     mydf3 = mydf2[-to.prune,] 
-    mydf3 = mydf3[mydf3$clade != "Viridiplantae",]; outstr = "coevol-not-plants.png" 
+    mydf3 = mydf3[mydf3$clade != "Viridiplantae",]; outstr = "coevol-update-not-plants.png" 
   } else if(expt == 4) { 
     to.prune = which(mydf2$label %in% c("laminaria digitata", "nitzschia alba", "prototheca bovis", "prototheca ciferrii", "epirixanthes elongata", "nepenthes ventricosa x nepenthes alata", "choreocolax polysiphoniae"))
     mydf3 = mydf2[-to.prune,]  
-    outstr = "coevol-pruned.png" 
+    outstr = "coevol-update-pruned.png" 
   }
   
   colnames(mydf3) = c("label", "mt", "pt", "mtnorm", "ptnorm", "clade")
@@ -357,7 +369,7 @@ png("fig-s1.png", width=400*sf, height=400*sf, res=72*sf)
 grid.arrange( g.fig.s1, nrow=1)
 dev.off()
 
-write.table(mydf2, "species-list.csv",  row.names=FALSE, col.names = FALSE, sep=",")
+write.table(mydf2, "species-list-update.csv",  row.names=FALSE, col.names = FALSE, sep=",")
 
 ############
 # look at different ecological traits
