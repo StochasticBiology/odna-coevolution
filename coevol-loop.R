@@ -275,6 +275,8 @@ for(expt in c(1, 2, 3, 4)) {
                  alpha = .2) #+
   #  theme(legend.position="none")
   
+ 
+  
   ggtree(both.tree, layout='circular', branch.length='none', alpha=1) %<+% mydf3 +
     geom_fruit(geom=geom_col, pwidth=1, alpha=0.2, offset=1,
                mapping = aes(x=ptnorm, y=label), 
@@ -369,9 +371,14 @@ df$broad.cellularity[grepl("multi", df$cellularity, fixed=TRUE)] = "multi"
 df$broad.timing = "perennial"
 df$broad.timing[df$timing != "perennial"] = "shorter"
 df$broad.timing[is.na(df$timing)] = NA
+df$green = "no"
+df$green[which(grepl("reen", df$notes) | df$herbaceous != "undefined")] = "yes"
 
 g.algae = ggplot(df, aes(x=mtnorm,y=ptnorm,color=alga)) + 
   geom_point() + theme_classic() + xlab("Δ MT gene count") + ylab("Δ PT gene count") 
+g.green = ggplot(df, aes(x=mtnorm,y=ptnorm,color=green)) + 
+  geom_point() + theme_classic() + xlab("Δ MT gene count") + ylab("Δ PT gene count") 
+
 g.parasite = ggplot(df, aes(x=mtnorm,y=ptnorm,color=parasite)) + 
   geom_point() + theme_classic() + xlab("Δ MT gene count") + ylab("Δ PT gene count") 
 g.cellularity = ggplot(df, aes(x=mtnorm,y=ptnorm,color=broad.cellularity)) + 
@@ -379,6 +386,19 @@ g.cellularity = ggplot(df, aes(x=mtnorm,y=ptnorm,color=broad.cellularity)) +
 g.herbaceous = ggplot(df, aes(x=mtnorm,y=ptnorm,color=herbaceous)) + 
   geom_point() + theme_classic() + xlab("Δ MT gene count") + ylab("Δ PT gene count") 
 g.timing = ggplot(df, aes(x=mtnorm,y=ptnorm,color=broad.timing)) + 
+  geom_point() + theme_classic() + xlab("Δ MT gene count") + ylab("Δ PT gene count") 
+
+df$Alga = df$alga
+g.algae.lm = ggplot(df, aes(x=mtnorm,y=ptnorm,color=Alga,fill=Alga)) +
+ geom_smooth(data=df[df$Alga=="yes",], method="lm", alpha=0.1, linewidth=0.2) + 
+  geom_smooth(data=df[df$Alga=="no",], method="lm", alpha=0.1, linewidth=0.2) +
+  geom_point(data = df) + theme_classic() + xlab("Δ MT gene count") + ylab("Δ PT gene count") 
+
+df$Herbaceous = df$herbaceous
+df$Herbaceous[df$Herbaceous=="mixed"] = "yes"
+g.herbaceous.lm = ggplot(df, aes(x=mtnorm,y=ptnorm,color=Herbaceous,fill=Herbaceous)) + 
+  geom_smooth(data=df[df$Herbaceous=="yes",], method="lm", alpha=0.1, linewidth=0.2) + 
+  geom_smooth(data=df[df$Herbaceous=="no",], method="lm", alpha=0.1, linewidth=0.2) +
   geom_point() + theme_classic() + xlab("Δ MT gene count") + ylab("Δ PT gene count") 
 
 x = list(
@@ -406,8 +426,12 @@ png("venn-diags.png", width=800*sf, height=400*sf, res=72*sf)
 ggarrange(g.venn.1, g.venn.2, nrow=1, labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
-png("fig-2.png", width=400*sf, height=700*sf, res=72*sf)
-ggarrange(g.venn.1 + theme(legend.position = "none"), g.algae, g.herbaceous, nrow=3, labels=c("A", "B", "C"), font.label=list(size=18))
+#png("fig-2.png", width=400*sf, height=700*sf, res=72*sf)
+#ggarrange(g.venn.1 + theme(legend.position = "none"), g.algae, g.herbaceous, nrow=3, labels=c("A", "B", "C"), font.label=list(size=18))
+#dev.off()
+
+png("fig-2.png", width=600*sf, height=300*sf, res=72*sf)
+ggarrange(g.venn.1 + theme(legend.position = "none"), g.algae.lm, nrow=1, labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
 ### LMMs for eco traits
@@ -422,6 +446,14 @@ mod.a.nlmm = lme(ptnorm ~ mtnorm, random = ~ mtnorm | broad.cellularity, control
 mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | broad.cellularity, control=ctrl, data = df, method="ML")
 AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
 
+# green
+mod.lm = lm(ptnorm ~ mtnorm, data = df)
+#mod.nlmm = lmer(ptnorm ~ mtnorm + (mtnorm | broad.cellularity), data = df, method="ML")
+#mod.nlmm1 = lmer(ptnorm ~ mtnorm + (1 | broad.cellularity), data = df, method="ML")
+mod.a.nlmm = lme(ptnorm ~ mtnorm, random = ~ mtnorm | green, control=ctrl, data = df, method="ML")
+mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | green, control=ctrl, data = df, method="ML")
+AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
+
 # algae
 mod.lm = lm(ptnorm ~ mtnorm, data = df)
 #mod.nlmm = lmer(ptnorm ~ mtnorm + (mtnorm | broad.cellularity), data = df, method="ML")
@@ -431,12 +463,13 @@ mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | alga, control=ctrl, data = df,
 AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
 
 # herbaceous
-df$herbaceous[is.na(df$herbaceous)] = "undefined"
-mod.lm = lm(ptnorm ~ mtnorm, data = df)
+#df$herbaceous[is.na(df$herbaceous)] = "undefined"
+h.df = df[df$Herbaceous == "yes" | df$Herbaceous == "no",]
+mod.lm = lm(ptnorm ~ mtnorm, data = h.df)
 #mod.nlmm = lmer(ptnorm ~ mtnorm + (mtnorm | herbaceous), data = df, method="ML")
 #mod.nlmm1 = lmer(ptnorm ~ mtnorm + (1 | herbaceous), data = df, method="ML")
-mod.a.nlmm = lme(ptnorm ~ mtnorm, random = ~ mtnorm | herbaceous, control=ctrl, data = df, method="ML")
-mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | herbaceous, control=ctrl, data = df, method="ML")
+mod.a.nlmm = lme(ptnorm ~ mtnorm, random = ~ mtnorm | Herbaceous, control=ctrl, data = h.df, method="ML")
+mod.a.nlmm1 = lme(ptnorm ~ mtnorm, random = ~ 1 | Herbaceous, control=ctrl, data = h.df, method="ML")
 AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
 
 # timing
@@ -510,9 +543,6 @@ g.tree.cluster = ggtree(ph.tree, layout='circular') +
   geom_tiplab(aes(color=substr(label,1,2)), size=2) +
   theme(legend.position="none")
 
- ggtree(ph.tree, layout='circular') + 
-  geom_tiplab(size=3) +
-  theme(legend.position="none")
 
 clusters = cutree(ph$tree_col, k=10)
 which(clusters==1)
@@ -530,8 +560,8 @@ g.tree.oncotree = ggraph(otree.g, layout="dendrogram") +
   geom_node_text(aes(label=name, color=organelle),hjust=0,nudge_x=0.8,angle=45,size=2) + theme_void()
 
 sf = 2
-png("fig-3.png", width=1500*sf, height=400*sf, res=72*sf)
-ggarrange(g.tree.cluster, g.tree.oncotree, nrow=1, labels=c("A", "B"), font.label=list(size=18))
+png("fig-3.png", width=1200*sf, height=400*sf, res=72*sf)
+ggarrange(g.tree.cluster, g.tree.oncotree, nrow=1, widths=c(1,2), labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
 mt.n.1 = which(colnames(amal.mat.uniq)=="MT-atp9")
@@ -574,3 +604,17 @@ both.set = intersect(mt.set, pt.set)
 length(intersect(both.set, mydf3$label))
 
 grepl("laminaria", both.set)
+
+both.tree.labels = c(both.tree$tip.label, both.tree$node.label)
+rhodo.ref = which(both.tree.labels == "Rhodophyta")
+ggtree(both.tree, layout='circular', branch.length='none', alpha=1) %<+% mydf3 +
+  geom_fruit(geom=geom_col, pwidth=1, alpha=0.2,
+             mapping = aes(x=pt, y=label), 
+             size=0.2, color="#FF0000") +
+  geom_fruit(geom=geom_col, pwidth=1, offset=-1, alpha=0.2,
+             mapping = aes(x=mt, y=label), 
+             size=0.2, color="#0000FF") +
+  geom_cladelabel(node=rhodo.ref, label="Rhodophyta")# +
+#geom_hilight(mapping=aes(subset = node %in% which(tree.labs %in% clades.interest), fill=nodelab(both.tree, node)),
+#              type = "gradient", gradient.direction = 'rt',
+#             alpha = .2) #+
