@@ -6,7 +6,7 @@ library(lme4)
 library(phylolm)
 library(ggplot2)
 library(ggrepel)
-library(gridExtra)
+library(ggpubr)
 library(ggtree)
 library(ggtreeExtra)
 library(pheatmap)
@@ -15,8 +15,6 @@ library(ggraph)
 library(Oncotree)
 library(ggVennDiagram)
 
-library(randomForest)
-library(tree)
 
 # this function converts a species name string from the Newick format which Common Taxonomy Tree gives us into a simpler lower-case, no quotes version comparable to Kostas' dataset
 convname = function(str) {
@@ -108,6 +106,7 @@ for(expt in c(1, 2, 3, 4)) {
   mylm = lm(pt ~ mt, data=mydf3)
   g.dumb.lm = ggplot(mydf3, aes(x=mt, y=pt)) + #geom_smooth(method="lm", alpha=0.2) +
     geom_point(aes(x=mt,y=pt,color=clade)) + xlab("MT gene count") + ylab("PT gene count") +
+    labs(color="Clade") +
     theme_classic()
   g.dumb.lm
   
@@ -146,15 +145,16 @@ for(expt in c(1, 2, 3, 4)) {
       return(c(tx[lci],tx[uci]))
     }
     
-    boot<-bootMer(mod.lmm, FUN=fitfn, nsim=100) 
+    boot<-bootMer(mod.lmm, FUN=fitfn, nsim=100, use.u=TRUE) 
     boot.se<-apply(boot$t, 2, cifn)
     fit.frame$mod.lmm.mean = predict(mod.lmm, fit.frame, type="response")
+    fit.frame$mod.lmm.boot.mean = apply(boot$t, 2, mean)
     fit.frame$mod.lmm.lo = boot.se[1,]
     fit.frame$mod.lmm.hi = boot.se[2,]
     
     g.lmm = ggplot() +
       geom_ribbon(data = fit.frame, aes(x = mt, ymin = mod.lmm.lo, ymax = mod.lmm.hi, fill = factor(clade)), alpha=0.1) +
-      geom_line(data = fit.frame, aes(x = mt, y = mod.lmm.mean, color = factor(clade))) +
+      geom_line(data = fit.frame, aes(x = mt, y = mod.lmm.boot.mean, color = factor(clade))) +
       geom_point(data = mydf3, aes(x = mt, y = pt, color = factor(clade))) +
       scale_color_brewer(palette="Spectral") + scale_fill_brewer(palette="Spectral") +
       theme_light() + xlab("MT gene count") + ylab("PT gene count") + facet_wrap(~clade) +
@@ -240,8 +240,9 @@ for(expt in c(1, 2, 3, 4)) {
     geom_ribbon(data=plmnorm.df, aes(x=x,ymin=lo,ymax=hi),alpha=0.2,fill="#0000FF") +
     geom_line(data=plmnorm.df, aes(x=x,y=mean),alpha=1,color=1) +
     geom_point(data=mydf3, aes(x=mtnorm, y=ptnorm, alpha=phyloweight, color=clade)) + 
-    geom_text_repel(data=mydf3, aes(x=mtnorm,y=ptnorm,label=label,color=clade),size=2,alpha=1) +
-    xlab("Δ MT gene count") + ylab("Δ PT gene count") + theme_classic()
+   # geom_text_repel(data=mydf3, aes(x=mtnorm,y=ptnorm,label=label,color=clade),size=2,alpha=1) +
+    xlab("Δ MT gene count") + ylab("Δ PT gene count") + labs(color="Clade", alpha="Relative weight") +
+      theme_classic()
   
   #####################
   # phylo linear model with no clade correction
@@ -304,23 +305,23 @@ for(expt in c(1, 2, 3, 4)) {
   summary(plm.norm)
   
   sum.df = data.frame()
-  sum.df = rbind(sum.df, data.frame(method="naive LM", coeff=summary(mylm)$coefficients[2,1], p=summary(mylm)$coefficients[2,4]))
-  sum.df = rbind(sum.df, data.frame(method="shifted LM", coeff=summary(mylmn)$coefficients[2,1], p=summary(mylmn)$coefficients[2,4]))
+  sum.df = rbind(sum.df, data.frame(method="naive LM slope=", coeff=summary(mylm)$coefficients[2,1], p=summary(mylm)$coefficients[2,4]))
+  sum.df = rbind(sum.df, data.frame(method="shifted LM slope=", coeff=summary(mylmn)$coefficients[2,1], p=summary(mylmn)$coefficients[2,4]))
   if(expt != 2) {
-    sum.df = rbind(sum.df, data.frame(method="LMM", coeff=summary(mod.a.lmm)$tTable[2,1], p=summary(mod.a.lmm)$tTable[2,5]))
-    sum.df = rbind(sum.df, data.frame(method="shifted LMM", coeff=summary(mod.a.nlmm)$tTable[2,1], p=summary(mod.a.nlmm)$tTable[2,5]))
+    sum.df = rbind(sum.df, data.frame(method="LMM slope=", coeff=summary(mod.a.lmm)$tTable[2,1], p=summary(mod.a.lmm)$tTable[2,5]))
+    sum.df = rbind(sum.df, data.frame(method="shifted LMM slope=", coeff=summary(mod.a.nlmm)$tTable[2,1], p=summary(mod.a.nlmm)$tTable[2,5]))
   }
-  sum.df = rbind(sum.df, data.frame(method="phylo LM", coeff=summary(plm)$coefficients[2,1], p=summary(plm)$coefficients[2,4]))
-  sum.df = rbind(sum.df, data.frame(method="phylo shifted LM", coeff=summary(plm.norm)$coefficients[2,1], p=summary(plm.norm)$coefficients[2,4]))
+  sum.df = rbind(sum.df, data.frame(method="phylo LM slope=", coeff=summary(plm)$coefficients[2,1], p=summary(plm)$coefficients[2,4]))
+  sum.df = rbind(sum.df, data.frame(method="phylo shifted LM slope=", coeff=summary(plm.norm)$coefficients[2,1], p=summary(plm.norm)$coefficients[2,4]))
    
   tstr = function(arg) {
-    return(paste(c(arg[1], ": ", signif(arg[2], digits=2), " p = ", signif(arg[3], digits=2)), collapse=""))
+    return(paste(c(arg[1], signif(arg[2], digits=2), " p=", signif(arg[3], digits=2)), collapse=""))
   }
   
   sf = 2
   if(expt != 2) {
     png(outstr, width=1200*sf, height=2000*sf, res=72*sf)
-    grid.arrange( g.dumb.lm + ggtitle(tstr(sum.df[1,])),
+    ggarrange( g.dumb.lm + ggtitle(tstr(sum.df[1,])),
                   g.normalised.lm + ggtitle(tstr(sum.df[2,])),
                   g.lmm + ggtitle(tstr(sum.df[3,])),
                   g.norm.lmm + ggtitle(tstr(sum.df[4,])),
@@ -330,7 +331,7 @@ for(expt in c(1, 2, 3, 4)) {
                   g.plm.opacity.2 + ggtitle(tstr(sum.df[6,])),nrow=4)
   } else {
     png(outstr, width=1200*sf, height=1200*sf, res=72*sf)
-    grid.arrange( g.dumb.lm + ggtitle(tstr(sum.df[1,])),
+    ggarrange( g.dumb.lm + ggtitle(tstr(sum.df[1,])),
                   g.normalised.lm + ggtitle(tstr(sum.df[2,])),
                   g.tree + ggtitle(tstr(sum.df[3,])),
                   g.tree.norm + ggtitle(tstr(sum.df[4,])) , 
@@ -340,7 +341,7 @@ for(expt in c(1, 2, 3, 4)) {
   dev.off()
   
   if(expt == 1) {
-    g.fig.1a = g.dumb.lm + geom_text_repel(aes(label=label, color=clade), size=2) #+ ggtitle(tstr(sum.df[1,]))
+    g.fig.1a = g.dumb.lm + geom_text_repel(aes(label=label, color=clade), size=2, max.overlaps=10, alpha=1) #+ ggtitle(tstr(sum.df[1,]))
   }
   if(expt == 4) {
     g.fig.1b = g.plm.opacity.2 + ggtitle(tstr(sum.df[nrow(sum.df),]))
@@ -349,12 +350,12 @@ for(expt in c(1, 2, 3, 4)) {
 }
 
 sf = 2
-png("fig-1.png", width=800*sf, height=400*sf, res=72*sf)
-grid.arrange( g.fig.1a, g.fig.1b, nrow=1)
+png("fig-1.png", width=800*sf, height=300*sf, res=72*sf)
+ggarrange( g.fig.1a, g.fig.1b+guides(colour="none"), nrow=1, labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
 png("fig-s1.png", width=400*sf, height=400*sf, res=72*sf)
-grid.arrange( g.fig.s1, nrow=1)
+ggarrange( g.fig.s1, nrow=1)
 dev.off()
 
 write.table(mydf2, "species-list.csv",  row.names=FALSE, col.names = FALSE, sep=",")
@@ -402,11 +403,11 @@ g.venn.2 = ggVennDiagram(x) +
   scale_fill_gradient(low="white",high = "blue") +
   scale_color_discrete("#000000") 
 png("venn-diags.png", width=800*sf, height=400*sf, res=72*sf)
-grid.arrange(g.venn.1, g.venn.2, nrow=1)
+ggarrange(g.venn.1, g.venn.2, nrow=1, labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
 png("fig-2.png", width=400*sf, height=700*sf, res=72*sf)
-grid.arrange(g.venn.1 + theme(legend.position = "none"), g.algae, g.herbaceous, nrow=3)
+ggarrange(g.venn.1 + theme(legend.position = "none"), g.algae, g.herbaceous, nrow=3, labels=c("A", "B", "C"), font.label=list(size=18))
 dev.off()
 
 ### LMMs for eco traits
@@ -458,13 +459,13 @@ AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
 
 
 # try and build predictive models of gene counts
-pred.lm = lm(pt ~ mt*alga + mt*broad.cellularity + mt*parasite, data=df)
-pred.lm = lm(pt ~ clade + mt*alga + mt*broad.cellularity + mt*parasite, data=df)
-pred.lm = lm(pt ~ clade*mt, data=df)
-pred.lm = lm(pt ~ clade + mt, data=df)
-pred.lm = lm(ptnorm ~ mtnorm, data=df)
-pred.rf = randomForest(pt ~ clade*mt, data=df)
-pred.tree = tree(pt ~ clade*mt, data=df)
+#pred.lm = lm(pt ~ mt*alga + mt*broad.cellularity + mt*parasite, data=df)
+#pred.lm = lm(pt ~ clade + mt*alga + mt*broad.cellularity + mt*parasite, data=df)
+#pred.lm = lm(pt ~ clade*mt, data=df)
+#pred.lm = lm(pt ~ clade + mt, data=df)
+#pred.lm = lm(ptnorm ~ mtnorm, data=df)
+#pred.rf = randomForest(pt ~ clade*mt, data=df)
+#pred.tree = tree(pt ~ clade*mt, data=df)
 
 ########### explore clustering of genes across different organelles
 
@@ -509,6 +510,10 @@ g.tree.cluster = ggtree(ph.tree, layout='circular') +
   geom_tiplab(aes(color=substr(label,1,2)), size=2) +
   theme(legend.position="none")
 
+ ggtree(ph.tree, layout='circular') + 
+  geom_tiplab(size=3) +
+  theme(legend.position="none")
+
 clusters = cutree(ph$tree_col, k=10)
 which(clusters==1)
 
@@ -526,9 +531,13 @@ g.tree.oncotree = ggraph(otree.g, layout="dendrogram") +
 
 sf = 2
 png("fig-3.png", width=1500*sf, height=400*sf, res=72*sf)
-grid.arrange(g.tree.cluster, g.tree.oncotree, nrow=1)
+ggarrange(g.tree.cluster, g.tree.oncotree, nrow=1, labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
+mt.n.1 = which(colnames(amal.mat.uniq)=="MT-atp9")
+pt.n.1 = which(colnames(amal.mat.uniq)=="PT-ndhf")
+
+amal.mat.uniq[,c(mt.n.1, pt.n.1)]
 ####### skeletons algorithm
 write.table(amal.mat.uniq, "amal-mat-uniq.csv", sep=",", row.names=FALSE, col.names=FALSE)
 system("python3 algo3.py amal-mat-uniq.csv")
