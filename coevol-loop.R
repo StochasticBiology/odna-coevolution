@@ -564,6 +564,48 @@ png("fig-3.png", width=1200*sf, height=400*sf, res=72*sf)
 ggarrange(g.tree.cluster, g.tree.oncotree, nrow=1, widths=c(1,2), labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
+# get the dependent set
+start_node = which(V(otree.g)$name == "MT-atp9")
+all.paths = all_shortest_paths(otree.g, from = start_node, to = V(otree.g))
+# Extract the nodes from the paths
+reachable.nodes <- unlist(all.paths$res)
+# Remove duplicates and the starting node itself
+reachable.nodes <- setdiff(unique(reachable.nodes), start_node)
+rn.labels = V(otree.g)$name[reachable_nodes]
+pt.set = c()
+for(i in 1:length(rn.labels)) {
+  tmp = strsplit(rn.labels[i], split="-")[[1]][2]
+  pt.set = c(pt.set, tmp)
+}
+
+# pull retention indices of these sets
+mt.interest = c("ccmb", "rps1", "atp4", "atp1", "rps3", "atp9")
+pt.interest = pt.set
+mt.df = read.csv("mt-barcode-manual-indices.csv")
+pt.df = read.csv("pt-barcode-manual-indices.csv")
+
+mt.df$Subset = 0
+mt.df$Subset[mt.df$GeneLabel %in% mt.interest] = 1
+mt.df$Subset = factor(mt.df$Subset)
+
+pt.df$Subset = 0
+pt.df$Subset[pt.df$GeneLabel %in% pt.interest] = 1
+pt.df$Subset = factor(pt.df$Subset)
+
+g.mt = ggplot(mt.df, aes(x=reorder(GeneLabel, -Index), y=Index, fill=Subset)) +
+  geom_bar(stat="identity") + theme_light() +
+  theme(axis.text.x = element_text(angle=90)) + xlab("") +
+  scale_fill_manual(values = c("grey", "black")) 
+g.pt = ggplot(pt.df, aes(x=reorder(GeneLabel, -Index), y=Index, fill=Subset)) +
+  geom_bar(stat="identity") + theme_light() +
+  theme(axis.text.x = element_text(size=3, angle=90)) + xlab("") +
+  scale_fill_manual(values = c("grey", "black"))
+
+sf = 2
+png("fig-3-supp.png", width=800*sf, height=400*sf, res=72*sf)
+ggarrange(g.mt, g.pt, nrow=2, labels=c("MT", "PT"))
+dev.off()
+
 mt.n.1 = which(colnames(amal.mat.uniq)=="MT-atp9")
 pt.n.1 = which(colnames(amal.mat.uniq)=="PT-ndhf")
 
