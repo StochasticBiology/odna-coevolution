@@ -430,8 +430,8 @@ dev.off()
 #ggarrange(g.venn.1 + theme(legend.position = "none"), g.algae, g.herbaceous, nrow=3, labels=c("A", "B", "C"), font.label=list(size=18))
 #dev.off()
 
-png("fig-2.png", width=600*sf, height=300*sf, res=72*sf)
-ggarrange(g.venn.1 + theme(legend.position = "none"), g.algae.lm, nrow=1, labels=c("A", "B"), font.label=list(size=18))
+png("fig-2.png", width=700*sf, height=300*sf, res=72*sf)
+ggarrange(g.venn.1 + theme(legend.position = "none") + scale_x_continuous(expand = c(0.1, 0.1)), g.algae.lm, nrow=1, labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
 ### LMMs for eco traits
