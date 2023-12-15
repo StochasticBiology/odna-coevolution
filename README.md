@@ -1,7 +1,7 @@
 # odna-coevolution
 Coevolution of mtDNA and ptDNA genome content
 
-Requires R with libraries phytools, ape, phangorn, phylolm, nlme, lme4, pheatmap, Oncotree, igraph, ggplot2, ggpubr, ggrepel, ggtree, ggtreeExtra, ggVennDiagram.
+Requires R with libraries phytools, ape, phangorn, phylolm, nlme, lme4, pheatmap, Oncotree, igraph, ggplot2, ggpubr, ggraph, ggrepel, ggtree, ggtreeExtra, ggVennDiagram.
 
 Phylogenetic information, gene counts, and gene contents are pulled from a previous project https://github.com/StochasticBiology/odna-loss -- these are the `[mt/pt]-*.csv` datafiles. 
 
