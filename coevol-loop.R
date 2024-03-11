@@ -394,6 +394,16 @@ g.algae.lm = ggplot(df, aes(x=mtnorm,y=ptnorm,color=Alga,fill=Alga)) +
   geom_smooth(data=df[df$Alga=="no",], method="lm", alpha=0.1, linewidth=0.2) +
   geom_point(data = df) + theme_classic() + xlab("Δ MT gene count") + ylab("Δ PT gene count") 
 
+algae.yes.lm = lm(ptnorm ~ mtnorm, data= df[df$Alga=="yes",])
+algae.no.lm = lm(ptnorm ~ mtnorm, data= df[df$Alga=="no",])
+c.yes = summary(algae.yes.lm)$coefficients[2,1:2]
+c.no = summary(algae.no.lm)$coefficients[2,1:2]
+algae.title = paste0("Slope ΔPT~ΔMT:\n", 
+                     "Algae: ", round(c.yes[1], digits=2), " ± ", round(1.96*c.yes[2], digits=2),
+                     "; non-algae: ", round(c.no[1], digits=2), " ± ", round(1.96*c.no[2], digits=2),
+                     collapse="")
+g.algae.lm = g.algae.lm+ggtitle(algae.title)
+
 df$Herbaceous = df$herbaceous
 df$Herbaceous[df$Herbaceous=="mixed"] = "yes"
 g.herbaceous.lm = ggplot(df, aes(x=mtnorm,y=ptnorm,color=Herbaceous,fill=Herbaceous)) + 
@@ -431,7 +441,8 @@ dev.off()
 #dev.off()
 
 png("fig-2.png", width=700*sf, height=300*sf, res=72*sf)
-ggarrange(g.venn.1 + theme(legend.position = "none") + scale_x_continuous(expand = c(0.1, 0.1)), g.algae.lm, nrow=1, labels=c("A", "B"), font.label=list(size=18))
+ggarrange(g.venn.1 + theme(legend.position = "none") + scale_x_continuous(expand = c(0.1, 0.1)), 
+          g.algae.lm, nrow=1, labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
 ### LMMs for eco traits
