@@ -15,6 +15,7 @@ library(ggraph)
 library(Oncotree)
 library(ggVennDiagram)
 
+set.seed(1)
 
 # this function converts a species name string from the Newick format which Common Taxonomy Tree gives us into a simpler lower-case, no quotes version comparable to Kostas' dataset
 convname = function(str) {
@@ -82,21 +83,29 @@ rownames(mydf2) = mydf2$label
 
 ##### loop through different subsetting experiments
 #for(expt in c(1,2,3)) {
-for(expt in c(1, 2, 3, 4)) {
+for(expt in c(1, 2, 3, 4, 5)) {
   if(expt == 1) { 
     mydf3 = mydf2; outstr = "coevol-all.png" 
   } else if(expt == 2) { 
     to.prune = which(mydf2$label %in% c("laminaria digitata", "nitzschia alba", "prototheca bovis", "prototheca ciferrii", "epirixanthes elongata", "nepenthes ventricosa x nepenthes alata", "choreocolax polysiphoniae"))
     mydf3 = mydf2[-to.prune,] 
-    mydf3 = mydf3[mydf3$clade == "Viridiplantae",]; outstr = "coevol-plants.png" 
+    mydf3 = mydf3[mydf3$clade == "Viridiplantae",]; 
+    outstr = "coevol-plants.png" 
   } else if(expt == 3) { 
     to.prune = which(mydf2$label %in% c("laminaria digitata", "nitzschia alba", "prototheca bovis", "prototheca ciferrii", "epirixanthes elongata", "nepenthes ventricosa x nepenthes alata", "choreocolax polysiphoniae"))
     mydf3 = mydf2[-to.prune,] 
-    mydf3 = mydf3[mydf3$clade != "Viridiplantae",]; outstr = "coevol-not-plants.png" 
+    mydf3 = mydf3[mydf3$clade != "Viridiplantae",]; 
+    outstr = "coevol-not-plants.png" 
   } else if(expt == 4) { 
     to.prune = which(mydf2$label %in% c("laminaria digitata", "nitzschia alba", "prototheca bovis", "prototheca ciferrii", "epirixanthes elongata", "nepenthes ventricosa x nepenthes alata", "choreocolax polysiphoniae"))
     mydf3 = mydf2[-to.prune,]  
     outstr = "coevol-pruned.png" 
+  } else if(expt == 5) {
+    to.prune = which(mydf2$label %in% c("laminaria digitata", "nitzschia alba", "prototheca bovis", "prototheca ciferrii", "epirixanthes elongata", "nepenthes ventricosa x nepenthes alata", "choreocolax polysiphoniae"))
+    mydf3 = mydf2[-to.prune,] 
+    plant.set = which(mydf3$clade == "Viridiplantae")
+    mydf3 = mydf3[-sample(plant.set, length(plant.set)-20),]
+    outstr = "coevol-plants-downsampled"
   }
   
   colnames(mydf3) = c("label", "mt", "pt", "mtnorm", "ptnorm", "clade")
@@ -104,6 +113,12 @@ for(expt in c(1, 2, 3, 4)) {
   ##################### 
   # linear model, no clade or correlation
   mylm = lm(pt ~ mt, data=mydf3)
+  mydf3$newlabel = ""
+  for(i in 1:nrow(mydf3)) {
+    ssplit = as.vector(strsplit(mydf3$label[i], " "))[[1]]
+    newlabel = paste0(toupper(substr(ssplit[1], 1, 1)), ". ", ssplit[-1])
+    mydf3$newlabel[i] = newlabel
+  }
   g.dumb.lm = ggplot(mydf3, aes(x=mt, y=pt)) + #geom_smooth(method="lm", alpha=0.2) +
     geom_point(aes(x=mt,y=pt,color=clade)) + xlab("MT gene count") + ylab("PT gene count") +
     labs(color="Clade") +
@@ -118,8 +133,8 @@ for(expt in c(1, 2, 3, 4)) {
     theme_classic()
   g.normalised.lm
   
-  # mixed model only meaningful for all clades
-  if(expt == 1 | expt == 4) {
+  # mixed model not meaningful for single clade (expt 2)
+  if(expt != 2) {
     ctrl <- lmeControl(opt='optim');
     #####################
     # linear mixed model with random effects for clade without clade correction
@@ -239,9 +254,9 @@ for(expt in c(1, 2, 3, 4)) {
   g.plm.opacity.2 = ggplot() +
     geom_ribbon(data=plmnorm.df, aes(x=x,ymin=lo,ymax=hi),alpha=0.2,fill="#0000FF") +
     geom_line(data=plmnorm.df, aes(x=x,y=mean),alpha=1,color=1) +
-    geom_point(data=mydf3, aes(x=mtnorm, y=ptnorm, alpha=phyloweight, color=clade)) + 
+    geom_point(data=mydf3, aes(x=mtnorm, y=ptnorm, size=phyloweight, color=clade), alpha=0.6) + 
    # geom_text_repel(data=mydf3, aes(x=mtnorm,y=ptnorm,label=label,color=clade),size=2,alpha=1) +
-    xlab("Δ MT gene count") + ylab("Δ PT gene count") + labs(color="Clade", alpha="Relative weight") +
+    xlab("Δ MT gene count") + ylab("Δ PT gene count") + labs(color="Clade", size="Relative weight") +
       theme_classic()
   
   #####################
@@ -343,21 +358,37 @@ for(expt in c(1, 2, 3, 4)) {
   dev.off()
   
   if(expt == 1) {
-    g.fig.1a = g.dumb.lm + geom_text_repel(aes(label=label, color=clade), size=2, max.overlaps=10, alpha=1) #+ ggtitle(tstr(sum.df[1,]))
+    g.fig.1a = g.dumb.lm + 
+      geom_text_repel(aes(label=newlabel, color=clade), 
+                      size=3, max.overlaps=20, alpha=0.5) #+ ggtitle(tstr(sum.df[1,]))
   }
   if(expt == 4) {
     g.fig.1b = g.plm.opacity.2 + ggtitle(tstr(sum.df[nrow(sum.df),]))
     g.fig.s1 = g.lmm + ggtitle(tstr(sum.df[3,]))
   }
+  if(expt == 3) {
+    g.fig.s1x = g.lmm + ggtitle(tstr(sum.df[3,]))
+  }
+  if(expt == 5) {
+    g.fig.s1y = g.lmm + ggtitle(tstr(sum.df[3,]))
+  }
 }
-
-sf = 2
+ 
+sf = 3
 png("fig-1.png", width=800*sf, height=300*sf, res=72*sf)
 ggarrange( g.fig.1a, g.fig.1b+guides(colour="none"), nrow=1, labels=c("A", "B"), font.label=list(size=18))
 dev.off()
 
 png("fig-s1.png", width=400*sf, height=400*sf, res=72*sf)
 ggarrange( g.fig.s1, nrow=1)
+dev.off()
+
+png("fig-s1x.png", width=400*sf, height=400*sf, res=72*sf)
+ggarrange( g.fig.s1x, nrow=1)
+dev.off()
+
+png("fig-s1y.png", width=400*sf, height=400*sf, res=72*sf)
+ggarrange( g.fig.s1y, nrow=1)
 dev.off()
 
 write.table(mydf2, "species-list.csv",  row.names=FALSE, col.names = FALSE, sep=",")
@@ -544,7 +575,6 @@ ph = pheatmap(amal.mat.uniq,
               legend=FALSE,
               treeheight_row=0, cex=0.5)
 
-sf = 2
 png("odna-heatmap.png", width=1200*sf, height=1200*sf, res=72*sf)
 ph
 dev.off()
@@ -570,7 +600,6 @@ g.tree.oncotree = ggraph(otree.g, layout="dendrogram") +
   geom_node_point(aes(color=organelle)) + 
   geom_node_text(aes(label=name, color=organelle),hjust=0,nudge_x=0.8,angle=45,size=2) + theme_void()
 
-sf = 2
 png("fig-3.png", width=1200*sf, height=400*sf, res=72*sf)
 ggarrange(g.tree.cluster, g.tree.oncotree, nrow=1, widths=c(1,2), labels=c("A", "B"), font.label=list(size=18))
 dev.off()
@@ -612,7 +641,6 @@ g.pt = ggplot(pt.df, aes(x=reorder(GeneLabel, -Index), y=Index, fill=Subset)) +
   theme(axis.text.x = element_text(size=3, angle=90)) + xlab("") +
   scale_fill_manual(values = c("grey", "black"))
 
-sf = 2
 png("fig-3-supp.png", width=800*sf, height=400*sf, res=72*sf)
 ggarrange(g.mt, g.pt, nrow=2, labels=c("MT", "PT"))
 dev.off()
