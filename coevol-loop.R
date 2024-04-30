@@ -506,7 +506,8 @@ AIC(mod.lm, mod.a.nlmm, mod.a.nlmm1)
 
 # herbaceous
 #df$herbaceous[is.na(df$herbaceous)] = "undefined"
-h.df = df[df$Herbaceous == "yes" | df$Herbaceous == "no",]
+#h.df = df[df$Herbaceous == "yes" | df$Herbaceous == "no",]
+h.df = df[!is.na(df$Herbaceous),]
 mod.lm = lm(ptnorm ~ mtnorm, data = h.df)
 #mod.nlmm = lmer(ptnorm ~ mtnorm + (mtnorm | herbaceous), data = df, method="ML")
 #mod.nlmm1 = lmer(ptnorm ~ mtnorm + (1 | herbaceous), data = df, method="ML")
@@ -611,7 +612,7 @@ all.paths = all_shortest_paths(otree.g, from = start_node, to = V(otree.g))
 reachable.nodes <- unlist(all.paths$res)
 # Remove duplicates and the starting node itself
 reachable.nodes <- setdiff(unique(reachable.nodes), start_node)
-rn.labels = V(otree.g)$name[reachable_nodes]
+rn.labels = V(otree.g)$name[reachable.nodes]
 pt.set = c()
 for(i in 1:length(rn.labels)) {
   tmp = strsplit(rn.labels[i], split="-")[[1]][2]
@@ -649,27 +650,6 @@ mt.n.1 = which(colnames(amal.mat.uniq)=="MT-atp9")
 pt.n.1 = which(colnames(amal.mat.uniq)=="PT-ndhf")
 
 amal.mat.uniq[,c(mt.n.1, pt.n.1)]
-####### skeletons algorithm
-write.table(amal.mat.uniq, "amal-mat-uniq.csv", sep=",", row.names=FALSE, col.names=FALSE)
-system("python3 algo3.py amal-mat-uniq.csv")
-
-fname = "amal-mat-uniq.csv-outs2.csv"
-df = read.csv(fname, colClasses=c("character"))
-
-g = simplify(graph.data.frame(df))
-degs = degree(g)
-outdegs = degree(g, mode="out")
-n.leaf = length(degs[degs==1])
-e.branch = sum(outdegs[outdegs!=0]-1)
-tstr = paste(c(e.branch, " excess branches, ", n.leaf, " leaves"), collapse="")
-if(length(V(g)) < 50) { vsize = 3 } else { vsize =2 }
-#vsize = 2
-xoff = 1
-g.skeleton = ggraph(g, layout="dendrogram", circular=FALSE) + 
-  geom_edge_diagonal() + geom_node_point() + 
-  #geom_node_text(aes(label=name),hjust=0,nudge_x=xoff,angle=45,size=vsize) + 
-  ggtitle(tstr) + theme_void()
-g.skeleton
 
 ###############
 ########## bug hunting
