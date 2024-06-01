@@ -668,14 +668,23 @@ grepl("laminaria", both.set)
 
 both.tree.labels = c(both.tree$tip.label, both.tree$node.label)
 rhodo.ref = which(both.tree.labels == "Rhodophyta")
-ggtree(both.tree, layout='circular', branch.length='none', alpha=1) %<+% mydf3 +
-  geom_fruit(geom=geom_col, pwidth=1, alpha=0.2,
-             mapping = aes(x=pt, y=label), 
-             size=0.2, color="#FF0000") +
-  geom_fruit(geom=geom_col, pwidth=1, offset=-1, alpha=0.2,
-             mapping = aes(x=mt, y=label), 
-             size=0.2, color="#0000FF") +
-  geom_cladelabel(node=rhodo.ref, label="Rhodophyta")# +
-#geom_hilight(mapping=aes(subset = node %in% which(tree.labs %in% clades.interest), fill=nodelab(both.tree, node)),
-#              type = "gradient", gradient.direction = 'rt',
-#             alpha = .2) #+
+sf = 3
+png("cover-tree.png", width=800*sf, height=600*sf, res=72*sf)
+ggtree(both.tree, layout='circular', branch.length='none', alpha=1, linewidth=0.25) %<+% mydf3 +
+  geom_fruit(geom=geom_col, pwidth=1, offset=0.9, alpha=0.2,
+             mapping = aes(x=ptnorm, y=label), 
+             size=0.2, color="#FF0000", fill="#FF8888") +
+  geom_fruit(geom=geom_col, pwidth=1, offset=0, alpha=0.2,
+             mapping = aes(x=mtnorm, y=label), 
+             size=0.2, color="#0000FF", fill="#8888FF")
+dev.off()
+
+png("cover-tree-1.png", width=800*sf, height=600*sf, res=72*sf, bg="transparent")
+ggtree(both.tree, layout='circular', branch.length='none', alpha=1, linewidth=0.7) %<+% mydf3 +
+  geom_fruit(geom=geom_col, pwidth=1, offset=0.9, alpha=1,
+             mapping = aes(x=ptnorm, y=label), 
+             size=0.2, color="#FF8888", fill="#FFAAAA") +
+  geom_fruit(geom=geom_col, pwidth=1, offset=0, alpha=1,
+             mapping = aes(x=mtnorm, y=label), 
+             size=0.2, color="#8888FF", fill="#AAAAFF")
+dev.off()
